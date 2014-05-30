@@ -34,6 +34,12 @@ import string, glob, configparser
 
 __version__ = '1.0.0'
 
+__help__ = '''
+    Hyhyhy - Presentation nano-framework.            [v ''' + __version__ + ''']
+        hyhyhy.py build     -     Build project to file
+        hyhyhy.py status    -     Show project structure
+    '''
+
 def num(a):
     b = a.split('.')[-2]
     c = b.split('/')[-1]
@@ -47,8 +53,6 @@ def prf(a):
     b['WARNING'] = '\033[93m[WARNING]\033[0m'
     return b[str(a)]
 
-print( prf('INFO'), "Starting hyhyhyhyhyhyhyhyhy", "..." )
-
 assets, sections, default = list(glob.glob("assets/*")), list(glob.glob("sections/*")), 'default.cfg'
 html = '<html><head>(head)</head><body>(body)</body></html>'
 
@@ -56,9 +60,6 @@ config = configparser.ConfigParser()
 config.read(default)
 
 sections.sort(key = num)
-
-print( prf('OK'), "Reading config file", default, "..." )
-print( "------------------------------------------------------------------" )
 
 def getHead(a = ""):
     global html, assets, sections
@@ -127,15 +128,15 @@ def initStatus():
     for i in sections:
         print( "       -", i.split('/')[-1] )
 
-if len(sys.argv) == 1 or sys.argv[1] == 'build':
-    initBuild()
-elif sys.argv[1] == 'status':
-    initStatus()
+
+if len(sys.argv) == 2 and sys.argv[1] == 'help':
+    print( __help__ )
 else:
-    docs = '''
-    Hyhyhy - Presentation nano-framework.            [v ''' + __version__ + ''']
-        hyhyhy.py build     -     Build project to file
-        hyhyhy.py status    -     Show project structure
-    '''
-    print( docs )
+    print( prf('INFO'), "Starting hyhyhyhyhyhyhyhyhy", "..." )
+    print( prf('OK'), "Reading config file", default, "..." )
+
+    if len(sys.argv) == 2 and sys.argv[1] == 'status':
+        initStatus()
+    else:
+        initBuild()
 
