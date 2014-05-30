@@ -25,7 +25,14 @@
 # Author: Maciej A. Czyzewski <maciejanthonyczyzewski@gmail.com>
 #
 
-import configparser, os, string, glob
+import sys, os
+
+if sys.version_info < (3,2):
+    sys.exit( "Hyhyhy requires python in version >= 3.2" )
+
+import string, glob, configparser
+
+__version__ = '1.0.0'
 
 def num(a):
     b = a.split('.')[-2]
@@ -42,13 +49,16 @@ def prf(a):
 
 print( prf('INFO'), "Starting hyhyhyhyhyhyhyhyhy", "..." )
 
-assets, sections, default, index = list(glob.glob("assets/*")), list(glob.glob("sections/*")), 'default.cfg', 'build/index.html'
+assets, sections, default = list(glob.glob("assets/*")), list(glob.glob("sections/*")), 'default.cfg'
 html = '<html><head>(head)</head><body>(body)</body></html>'
 
 config = configparser.ConfigParser()
 config.read(default)
 
+sections.sort(key = num)
+
 print( prf('OK'), "Reading config file", default, "..." )
+print( "------------------------------------------------------------------" )
 
 def getHead(a = ""):
     global html, assets, sections
@@ -71,8 +81,6 @@ def getHead(a = ""):
 def getBody(a = ""):
     global html, assets, sections
 
-    sections.sort(key = num)
-
     for i in sections:
         print( prf('OK'), "Parsing file", i, "..." )
         a += "<section>" + str(open(i, 'r').read()) + "</section>"
@@ -87,8 +95,47 @@ def getHtml():
 
     return html
 
-build = open(index, 'w')
-build.write(getHtml())
-build.close()
+def initBuild():
+    global config
 
-print( prf('OK'), "Saved in", index, "->", config['head']['title'] )
+    if not os.path.exists(config['core']['build']):   
+        os.makedirs(config['core']['build'].split('/')[-2])
+
+    build = open(config['core']['build'], 'w')
+    build.write(getHtml())
+    build.close()
+
+    print( prf('OK'), "Saved in", config['core']['build'], "->", config['head']['title'] ) 
+
+def initStatus():
+    global assets, sections
+
+    print( prf('OK'), "Structure of project", "[" + str(len(sections)) + " slides]" )
+
+    print( "   - assets/" )
+
+    for i in assets:
+        if i.split('.')[-1] == "css":
+            print( "       -", i.split('/')[-1], "[style]" )
+        elif i.split('.')[-1] == "js":
+            print( "       -", i.split('/')[-1], "[script]" )
+        else:
+            print( "       -", i.split('/')[-1] )
+
+    print( "   - sections/" )
+
+    for i in sections:
+        print( "       -", i.split('/')[-1] )
+
+if len(sys.argv) == 1 or sys.argv[1] == 'build':
+    initBuild()
+elif sys.argv[1] == 'status':
+    initStatus()
+else:
+    docs = '''
+    Hyhyhy - Presentation nano-framework.            [v ''' + __version__ + ''']
+        hyhyhy.py build     -     Build project to file
+        hyhyhy.py status    -     Show project structure
+    '''
+    print( docs )
+
