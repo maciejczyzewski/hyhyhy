@@ -8,7 +8,7 @@ hyhyhy.py — Presentation nano-framework.
 
 ## Installation
 
-You can create a new project by generating structure like this. Make sure the destination folder does not exist yet.
+You can create a new project by generating structure like this. Make sure that the destination folder does not exist because it will be overwritten.
 
 ```
 - assets/
