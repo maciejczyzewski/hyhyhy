@@ -19,6 +19,7 @@ You can create a new project by generating structure like this. Make sure that t
 	- 2.html
 	...
 	- n.html
+default.cfg
 hyhyhy.py
 ```
 
@@ -48,6 +49,23 @@ Displays a brief summary of the basic functions.
 ```
 hyhyhy.py help
 ```
+
+## Configuration
+
+For now, you can change the basic variables in the configuration file.
+
+```
+[head]
+charset = UTF-8
+title = Example presentation by hyhyhy.py!
+
+[core]
+build = build/index.html
+```
+
+## Example 
+
+Sample presentation is already in the project. But if you want you can see it live [by clicking this link.](https://dl.dropboxusercontent.com/u/103345209/Hyhyhy/index.html)
 
 ## Contributing
 
