@@ -147,4 +147,4 @@ else:
     if len(sys.argv) == 2 and sys.argv[1] == 'status':
         init_status()
     else:
-        init_status()
+        init_build()
