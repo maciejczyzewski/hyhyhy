@@ -13,7 +13,7 @@ $( document ).ready(function() {
 			$("section").eq(current - 1).toggleClass("active");
 			current--;
 		}
-		if( e.keyCode == 39 && current < sections - 1 ){
+		if( (e.keyCode == 39 || e.keyCode == 32) && current < sections - 1 ){
 			$("section").eq(current).toggleClass("active");
 			$("section").eq(current + 1).toggleClass("active");
 			current++;
