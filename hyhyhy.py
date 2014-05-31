@@ -122,29 +122,30 @@ def init_status():
 
     print(prf('OK'), "Structure of project", "[" + str(len(sections)) + " slides]")
 
-    print("   - assets/")
+    print("- assets/".rjust(14))
 
     for i in assets:
         if i.split('.')[-1] == "css":
-            print("       -", i.split('/')[-1], "[style]")
+            print("-".rjust(10), i.split('/')[-1], "[style]")
         elif i.split('.')[-1] == "js":
-            print("       -", i.split('/')[-1], "[script]")
+            print("-".rjust(10), i.split('/')[-1], "[script]")
         else:
-            print("       -", i.split('/')[-1])
+            print("-".rjust(10), i.split('/')[-1])
 
-    print("   - sections/")
+    print("- sections/".rjust(16))
 
     for i in sections:
-        print("       -", i.split('/')[-1])
+        print("-".rjust(10), i.split('/')[-1])
 
 
-if len(sys.argv) == 2 and sys.argv[1] == 'help':
-    print(__help__)
-else:
-    print(prf('INFO'), "Starting hyhyhyhyhyhyhyhyhy", "...")
-    print(prf('OK'), "Reading config file", default, "...")
-
-    if len(sys.argv) == 2 and sys.argv[1] == 'status':
-        init_status()
+if __name__ == '__main__':
+    if len(sys.argv) == 2 and sys.argv[1] == 'help':
+        print(__help__)
     else:
-        init_build()
+        print(prf('INFO'), "Starting hyhyhyhyhyhyhyhyhy", "...")
+        print(prf('OK'), "Reading config file", default, "...")
+
+        if len(sys.argv) == 2 and sys.argv[1] == 'status':
+            init_status()
+        else:
+            init_build()
