@@ -63,6 +63,10 @@ title = Example presentation by hyhyhy.py!
 build = build/index.html
 ```
 
+## Dependencies
+
+* Python (>= 3.2.0)
+
 ## Example 
 
 Sample presentation is already in the project. But if you want you can see it live [by clicking this link.](https://dl.dropboxusercontent.com/u/103345209/Hyhyhy/index.html)
