@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	  	<meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	  	<title>Example presentation by hyhyhy!</title>
+	  	<meta name="description" content="A little words..." />
+
+	  	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet" type="text/css">
+	  	<link rel="stylesheet" href="styles/main.css">
+	</head>
+	<body>
+		<article id="presentation">
+	  	
+	    	<section  ><h1>Hyhyhy</h1>
+<h3><a href="https://twitter.com/_czyzewski">@_czyzewski</a></h3><img src="https://avatars1.githubusercontent.com/u/1976088?s=460" class="avatar avatar--small"></section>
+	  	
+	    	<section  ><h3>Single, global Hyhyhy:</h3>
+<pre class="language-bash"><code>$ pip install hyhyhy</code></pre></section>
+	  	
+	    	<section  ><h3>Configuration over code</h3>
+<pre class="language-javascript"><code>[head]
+title = Example presentation by hyhyhy!
+description = A little words...
+
+[core]
+build = build/index.html
+
+[sections]
+5 = data-bespoke-state="green" class="light"
+</code></pre></section>
+	  	
+	    	<section  ><h3>Built-in create task to get you started</h3>
+<pre class="language-bash"><code>$ hyhyhy create</code></pre></section>
+	  	
+	    	<section data-bespoke-state="green" class="light"><h2 class="bullet">Kitchen sink</h2>
+<ul>
+    <li>build</li>
+    <li>create</li>
+    <li>status</li>
+    <li>help</li>
+</ul></section>
+	  	
+	    	<section  ><h3>Basic structure</h3>
+<pre class="language-javascript"><code>|-- assets
+|   |-- index.jinja
+|   |-- scripts
+|   |   |-- main.js
+|   |-- styles
+|   |   |-- main.css
+|-- sections
+|   |-- 1.html
+|   |-- 2.md
+|   |-- ...
+|   |-- n.html
+|-- default.cfg
+</code></pre></section>
+	  	
+	    	<section  ><pre class="language-bash"><code>$ hyhyhy build</code></pre></section>
+	  	
+	    	<section data-bespoke-state="green" class="light"><h2>So...</h2>
+<h3>Ready to contribute?</h3></section>
+	  	
+	  	</article>
+
+	  	<script src="scripts/main.js"></script>
+
+	  	<script>bespoke.from('#presentation', { bullets: "li, .bullet", hash: true, keys: true, fullscreen: true, progress: true, scale: true, state: true, touch: true });</script>
+	</body>
+</html>
