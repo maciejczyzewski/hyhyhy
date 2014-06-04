@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	  	<meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	  	<title>{{ title }}</title>
+	  	<meta name="description" content="{{ description }}" />
+
+	  	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet" type="text/css">
+	  	<link rel="stylesheet" href="styles/main.css">
+	</head>
+	<body>
+		<article id="presentation">
+	  	{% for item in sections %}
+	    	<section {{ item[1] }}>{{ item[0] }}</section>
+	  	{% endfor %}
+	  	</article>
+
+	  	<script src="scripts/main.js"></script>
+
+	  	<script>bespoke.from('#presentation', { bullets: "li, .bullet", hash: true, keys: true, fullscreen: true, progress: true, scale: true, state: true, touch: true });</script>
+	</body>
+</html>

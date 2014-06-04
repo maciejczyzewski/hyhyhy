@@ -38,7 +38,7 @@ from rcssmin import cssmin
 import markdown
 import jinja2
 
-__version__ = '1.0.1'
+__version__ = '1.0.7'
 
 __help__ = '''
     hyhyhy - Presentation nano-framework.                                 [v ''' + __version__ + ''']

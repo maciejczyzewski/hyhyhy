@@ -1,0 +1,5 @@
+recursive-include src/2.x/structure *
+recursive-include src/3.x/structure *
+include LICENSE
+include README.md
+include screenshot.png

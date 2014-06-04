@@ -40,7 +40,7 @@ import markdown
 import jinja2
 from io import open
 
-__version__ = u'1.0.1'
+__version__ = u'1.0.7'
 
 __help__ = u'''
     hyhyhy - Presentation nano-framework.                                 [v ''' + __version__ + u''']
