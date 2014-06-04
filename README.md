@@ -124,7 +124,7 @@ $ hyhyhy build
 
 ## Example 
 
-Sample presentation is already in the project. But if you want you can see it live [by clicking this link.]()
+Sample presentation is already in the project. But if you want you can see it live [by clicking this link.](http://maciejczyzewski.github.io/hyhyhy/)
 
 ## Contributing
 
