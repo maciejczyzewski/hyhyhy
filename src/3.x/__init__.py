@@ -100,8 +100,8 @@ def get_html():
 
     template = jinja2.Template(open("assets/index.jinja", 'r').read())
 
-    templateVars = { "title" : str(config.get('head', 'title')),
-                     "description" : str(config.get('head', 'description')),
+    templateVars = { "title" : str(config.get('head', 'title')).decode('utf-8'),
+                     "description" : str(config.get('head', 'description')).decode('utf-8'),
                      "sections": get_sections() }
 
     return template.render(templateVars)

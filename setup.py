@@ -31,6 +31,7 @@ setup(
         'hyhyhy': tree(pkgdir['hyhyhy'], 'structure')
     },
     include_package_data=True,
+    zip_safe=False,
     entry_points={
         "console_scripts": [
             "hyhyhy = hyhyhy:main",
@@ -49,8 +50,17 @@ for formatting instructions and more information.
     url='https://github.com/MaciejCzyzewski/hyhyhy',
     platforms=['any'],
     classifiers=[
+        'Operating System :: OS Independent',
         'Development Status :: 3 - Alpha',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Environment :: Console',
+        'Environment :: Web Environment',
         'Topic :: Utilities',
+        'Topic :: Multimedia :: Graphics :: Presentation',
+        'Topic :: Text Processing :: Markup',
         'License :: OSI Approved :: MIT License',
     ],
 )
