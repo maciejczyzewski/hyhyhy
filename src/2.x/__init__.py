@@ -68,7 +68,7 @@ def prf(a):
     return b[unicode(a)]
 
 
-path = [os.path.abspath(__file__ + u'/../structure/') + u'/', os.path.abspath(os.getcwdu()) + u'/']
+path = [os.path.abspath(__file__ + u'/../../lib/structure/') + u'/', os.path.abspath(os.getcwdu()) + u'/']
 
 sections = list(glob.glob(u'sections/*'))
 default = u'default.cfg'

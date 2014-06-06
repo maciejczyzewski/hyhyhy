@@ -66,7 +66,7 @@ def prf(a):
     return b[str(a)]
 
 
-path = [os.path.abspath(__file__ + '/../structure/') + '/', os.path.abspath(os.getcwd()) + '/']
+path = [os.path.abspath(__file__ + '/../../lib/structure/') + '/', os.path.abspath(os.getcwd()) + '/']
 
 sections = list(glob.glob('sections/*'))
 default = 'default.cfg'
