@@ -17,7 +17,7 @@ pkgdir = {
 
 setup(
     name='hyhyhy',
-    version='1.0.7',
+    version='1.0.8',
     packages=['hyhyhy', 'lib'],
     package_dir=pkgdir,
     include_package_data=True,
