@@ -32,16 +32,16 @@ import os
 
 
 def num(path):
-    name = os.path.basename(path)
-    (name, ext) = os.path.splitext(name)
-    return int(name)
+    return os.path.splitext(os.path.basename(path))[0]
 
 
-def prf(a):
-    b = {
-        'OK': '\033[92m[OK]\033[0m',
-        'FAIL': '\033[91m[FAIL]\033[0m',
-        'INFO': '\033[95m[INFO]\033[0m',
-        'WARNING': '\033[93m[WARNING]\033[0m',
+def prf(code):
+    mode = {
+        u'OK':       u'\033[92m[OK]\033[0m',
+        u'FAIL':     u'\033[91m[FAIL]\033[0m',
+        u'INFO':     u'\033[95m[INFO]\033[0m',
+        u'WARNING':  u'\033[93m[WARNING]\033[0m',
         }
-    return b[str(a)]
+
+    return mode[unicode(code)]
+

@@ -44,94 +44,97 @@ Options:
   -V, --version          Show version.
 """
 
-import sys
 import os
-
+import sys
 import shutil
 
 from rjsmin import jsmin
 from rcssmin import cssmin
 
-from hyhyhy.get import sections, html
-from hyhyhy.config import path, sections, default, config
-from hyhyhy.utils import num, prf
+from hyhyhy.collector import collector
+from hyhyhy.config import config
+from hyhyhy.middleware import (num, prf)
+
+class Cli:
+    def build(self):
+        if os.path.exists('build'):
+            shutil.rmtree('build')
+
+        shutil.copytree('assets', 'build')
+
+        with open(config.settings.get('core', 'build'), 'w') as build:
+            build.write(collector.html())
+
+        os.remove('build/index.jinja')
+
+        for (top, dirs, files) in os.walk('build/'):
+            for nm in files:
+                if os.path.join(top, nm).split('.')[-1] == 'js':
+                    with open(os.path.join(top, nm)) as f:
+                        file_str = f.read()
+                    file_str = jsmin(file_str)
+                    with open(os.path.join(top, nm), 'w') as f:
+                        f.write(file_str)
+
+                    print (prf('OK'), 'Compressing file', nm, '...')
+
+                if os.path.join(top, nm).split('.')[-1] == 'css':
+                    with open(os.path.join(top, nm)) as f:
+                        file_str = f.read()
+                    file_str = cssmin(file_str)
+                    with open(os.path.join(top, nm), 'w') as f:
+                        f.write(file_str)
+
+                    print (prf('OK'), 'Compressing file', nm, '...')
+
+        print (prf('OK'), 'Saved in', config.settings.get('core', 'build'), '->',
+               config.settings.get('head', 'title'))
 
 
-def init_build():
-    if os.path.exists(path[1] + 'build'):
-        shutil.rmtree(path[1] + 'build')
+    def create(self):
+        if not os.path.exists('assets'):
+            shutil.copytree(config.path[0] + 'assets', 'assets')
+        else:
+            print (prf('WARNING'), 'Path already exists assets/', '!')
 
-    shutil.copytree(path[1] + 'assets', path[1] + 'build')
+        if not os.path.exists('sections'):
+            shutil.copytree(config.path[0] + 'sections', 'sections')
+        else:
+            print (prf('WARNING'), 'Path already exists sections/', '!')
 
-    with open(config.get('core', 'build'), 'w') as build:
-        build.write(html())
+        if not os.path.exists('default.cfg'):
+            shutil.copyfile(config.path[0] + 'default.cfg', 'default.cfg')
+        else:
+            print (prf('WARNING'), 'Path already exists default.cfg', '!')
 
-    os.remove(path[1] + 'build/index.jinja')
-
-    for (top, dirs, files) in os.walk('build/'):
-        for nm in files:
-            if os.path.join(top, nm).split('.')[-1] == 'js':
-                with open(os.path.join(top, nm)) as f:
-                    file_str = f.read()
-                file_str = jsmin(file_str)
-                with open(os.path.join(top, nm), 'w') as f:
-                    f.write(file_str)
-
-                print (prf('OK'), 'Compressing file', nm, '...')
-            if os.path.join(top, nm).split('.')[-1] == 'css':
-                with open(os.path.join(top, nm)) as f:
-                    file_str = f.read()
-                file_str = cssmin(file_str)
-                with open(os.path.join(top, nm), 'w') as f:
-                    f.write(file_str)
-
-                print (prf('OK'), 'Compressing file', nm, '...')
-
-    print (prf('OK'), 'Saved in', config.get('core', 'build'), '->',
-           config.get('head', 'title'))
+        print (prf('OK'), 'New project created!')
 
 
-def init_create():
-    if not os.path.exists(path[1] + 'assets'):
-        shutil.copytree(path[0] + 'assets', path[1] + 'assets')
-    else:
-        print (prf('WARNING'), 'Path already exists assets/', '!')
+    def status(self):
+        print (prf('OK'), 'Structure of project', '[' + str(len(config.sections))
+               + ' slides]')
 
-    if not os.path.exists(path[1] + 'sections'):
-        shutil.copytree(path[0] + 'sections', path[1] + 'sections')
-    else:
-        print (prf('WARNING'), 'Path already exists sections/', '!')
-
-    if not os.path.exists(path[1] + 'default.cfg'):
-        shutil.copyfile(path[0] + 'default.cfg', path[1] + 'default.cfg')
-    else:
-        print (prf('WARNING'), 'Path already exists default.cfg', '!')
-
-    print (prf('OK'), 'New project created!')
-
-
-def init_status():
-    print (prf('OK'), 'Structure of project', '[' + str(len(sections))
-           + ' slides]')
-
-    print (os.popen(''' find . -print 2>/dev/null | awk '!/\.$/ { \
-        for (i=1; i<NF; i++) { \
-            printf("%4s", "|") \
-        } \
-        print "-- "$NF \
-    }' FS='/' ''').read())
+        print (os.popen(''' find . -print 2>/dev/null | awk '!/\.$/ { \
+            for (i=1; i<NF; i++) { \
+                printf("%4s", "|") \
+            } \
+            print "-- "$NF \
+        }' FS='/' ''').read())
 
 
 def main():
+    cli = Cli()
+
     if len(sys.argv) == 2 and sys.argv[1] == 'build':
-        init_build()
+        cli.build()
     elif len(sys.argv) == 2 and sys.argv[1] == 'create':
-        init_create()
+        cli.create()
     elif len(sys.argv) == 2 and sys.argv[1] == 'status':
-        init_status()
+        cli.status()
     else:
         print (__doc__)
 
 
 if __name__ == '__main__':
     main()  
+

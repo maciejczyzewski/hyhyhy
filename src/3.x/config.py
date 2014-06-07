@@ -32,15 +32,19 @@ import os
 import configparser
 import glob
 
-from hyhyhy.utils import num, prf
+from hyhyhy.middleware import num
 
-path = [os.path.abspath(__file__ + '/../../lib/structure/') + '/',
-        os.path.abspath(os.getcwd()) + '/']
+class Config:
+	def __init__(self, file):
+		self.path = [os.path.abspath(__file__ + '/../../lib/structure/') + '/',
+        			 os.path.abspath(os.getcwd()) + '/']
 
-sections = list(glob.glob('sections/*'))
-default = 'default.cfg'
+		self.settings = configparser.ConfigParser()
+		self.settings.read(file)
 
-config = configparser.ConfigParser()
-config.read(default)
+		self.sections = list(glob.glob('sections/*'))
+		self.sections.sort(key=num)
 
-sections.sort(key=num)
+
+config = Config('default.cfg')
+

@@ -31,31 +31,41 @@
 import markdown
 import jinja2
 
-from hyhyhy.config import path, sections, default, config
-from hyhyhy.utils import num, prf
+from hyhyhy.config import config
+from hyhyhy.middleware import prf
 
 
-def parse(a=[], b='', c=''):
-    for i in sections:
-        print (prf('OK'), 'Parsing file', i, '...')
-        c = i.split('.')[-2].split('/')[-1]
-        if i.split('.')[-1] == 'md':
-            b = str(markdown.markdown(open(i, 'r').read()))
-        elif i.split('.')[-1] == 'html':
-            b = str(open(i, 'r').read())
-        if config.has_option('sections', c):
-            a.append([b, config.get('sections', c)])
-        else:
-            a.append([b, ' '])
+class Collector:
+    def parse(self, content=[], html='', id=''):
+        for file in config.sections:
+            print (prf('OK'), 'Parsing file', file, '...')
 
-    return a
+            id = file.split('.')[-2].split('/')[-1]
+
+            if file.split('.')[-1] == 'md':
+                html = markdown.markdown(open(file, 'r').read())
+            elif file.split('.')[-1] == 'html':
+                html = open(file, 'r').read()
+
+            if config.settings.has_option('sections', id):
+                content.append([html, config.settings.get('sections', id)])
+            else:
+                content.append([html, ' '])
+
+        return content
 
 
-def html():
-    template = jinja2.Template(open('assets/index.jinja', 'r').read())
+    def html(self):
+        template = jinja2.Template(open('assets/index.jinja', 'r').read())
 
-    templateVars = {'title': str(config.get('head', 'title')),
-                    'description': str(config.get('head', 'description'
-                    )), 'sections': parse()}
+        vars = {
+            'title':        config.settings.get('head', 'title'),
+            'description':  config.settings.get('head', 'description'),
+            'sections':     self.parse()
+            }
 
-    return template.render(templateVars)
+        return template.render(vars)
+
+
+collector = Collector()
+

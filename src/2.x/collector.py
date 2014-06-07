@@ -31,32 +31,42 @@
 import markdown
 import jinja2
 
-from hyhyhy.config import path, sections, default, config
-from hyhyhy.utils import num, prf
+from hyhyhy.config import config
+from hyhyhy.middleware import prf
 from io import open
 
 
-def parse(a=[], b=u'', c=u''):
-    for i in sections:
-        print prf(u'OK'), u'Parsing file', i, u'...'
-        c = i.split(u'.')[-2].split(u'/')[-1]
-        if i.split(u'.')[-1] == u'md':
-            b = unicode(markdown.markdown(open(i, u'r').read()))
-        elif i.split(u'.')[-1] == u'html':
-            b = unicode(open(i, u'r').read())
-        if config.has_option(u'sections', c):
-            a.append([b, config.get(u'sections', c)])
-        else:
-            a.append([b, u' '])
+class Collector(object):
+    def parse(self, content=[], html=u'', id=u''):
+        for file in config.sections:
+            print prf(u'OK'), u'Parsing file', file, u'...'
 
-    return a
+            id = file.split(u'.')[-2].split(u'/')[-1]
+
+            if file.split(u'.')[-1] == u'md':
+                html = markdown.markdown(open(file, u'r').read())
+            elif file.split(u'.')[-1] == u'html':
+                html = open(file, u'r').read()
+
+            if config.settings.has_option(u'sections', id):
+                content.append([html, config.settings.get(u'sections', id)])
+            else:
+                content.append([html, u' '])
+
+        return content
 
 
-def html():
-    template = jinja2.Template(open(u'assets/index.jinja', u'r').read())
+    def html(self):
+        template = jinja2.Template(open(u'assets/index.jinja', u'r').read())
 
-    templateVars = {u'title': unicode(config.get(u'head', u'title')),
-                    u'description': unicode(config.get(u'head', u'description'
-                    )), u'sections': parse()}
+        vars = {
+            u'title':        config.settings.get(u'head', u'title'),
+            u'description':  config.settings.get(u'head', u'description'),
+            u'sections':     self.parse()
+            }
 
-    return template.render(templateVars)
+        return template.render(vars)
+
+
+collector = Collector()
+
