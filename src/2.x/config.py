@@ -45,6 +45,8 @@ class Config(object):
 		self.sections = list(glob.glob(u'sections/*'))
 		self.sections.sort(key=num)
 
+		self.file = file
+
 
 config = Config(u'default.cfg')
 

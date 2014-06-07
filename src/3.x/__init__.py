@@ -60,6 +60,12 @@ class Cli:
         if os.path.exists('build'):
             shutil.rmtree('build')
 
+        if not os.path.exists('assets') \
+            and not os.path.exists('sections') \
+            and not os.path.exists(config.file):
+            print (prf('FAIL'), 'Structure does not exist', '!')
+            sys.exit(1)
+            
         shutil.copytree('assets', 'build')
 
         with open(config.settings.get('core', 'build'), 'w') as build:
