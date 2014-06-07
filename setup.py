@@ -1,6 +1,5 @@
 import os
 import sys
-import src
 
 from setuptools import setup
 
@@ -10,7 +9,7 @@ pkgdir = {
 
 setup(
     name='hyhyhy',
-    version=src.__version__,
+    version='1.1.0',
     packages=['hyhyhy', 'lib'],
     package_dir=pkgdir,
     include_package_data=True,
