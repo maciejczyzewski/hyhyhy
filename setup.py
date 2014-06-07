@@ -9,14 +9,14 @@ pkgdir = {
 
 setup(
     name='hyhyhy',
-    version='1.1.0',
+    version='1.1.1',
     packages=['hyhyhy', 'lib'],
     package_dir=pkgdir,
     include_package_data=True,
     zip_safe=False,
     entry_points={
         "console_scripts": [
-            "hyhyhy = hyhyhy.cli:main",
+            "hyhyhy = hyhyhy:main",
         ]
     },
     install_requires=[
