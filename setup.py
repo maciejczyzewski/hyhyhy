@@ -1,30 +1,23 @@
 import os
 import sys
+import src
 
 from setuptools import setup
 
-# Utility function to read the README file.
-# Used for the long_description. It's nice, because now 1) we have a top level
-# README file and 2) it's easier to type in the README file than to put a raw
-# string in below ...
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
-# Version of python
 pkgdir = {
     'hyhyhy': 'src/%s.x' % sys.version_info[0],
 }
 
 setup(
     name='hyhyhy',
-    version='1.0.8',
+    version=src.__version__,
     packages=['hyhyhy', 'lib'],
     package_dir=pkgdir,
     include_package_data=True,
     zip_safe=False,
     entry_points={
         "console_scripts": [
-            "hyhyhy = hyhyhy:main",
+            "hyhyhy = hyhyhy.cli:main",
         ]
     },
     install_requires=[
