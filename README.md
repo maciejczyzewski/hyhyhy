@@ -126,6 +126,14 @@ $ hyhyhy build
 
 Sample presentation is already in the project. But if you want you can see it live [by clicking this link.](http://maciejczyzewski.github.io/hyhyhy/)
 
+## Supported browsers
+
+- Firefox 2+
+- Safari 3+
+- Opera 9.64+
+- Chrome
+- IE9, IE10, IE11
+
 ## Contributing
 
 Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
