@@ -11,13 +11,13 @@ Presentation nano-framework.
 Binary installers for the latest released version are available at the [Python
 package index.](http://pypi.python.org/pypi/hyhyhy/)
 
-```
+```bash
 $ pip install hyhyhy
 ```
 
 You can create a new project by generating structure like this. Make sure that the destination folder does not exist because it will be overwritten.
 
-```
+```bash
 |-- assets
 |   |-- index.jinja
 |   |-- scripts
@@ -39,7 +39,7 @@ You can create a new project by generating structure like this. Make sure that t
 This function should splice all your slides/sections in one presentation.
 When you build your project it will generate a static version in the build folder that you can use. 
 
-```
+```bash
 $ hyhyhy build
 ```
 
@@ -47,7 +47,7 @@ $ hyhyhy build
 
 Creates a default structure.
 
-```
+```bash
 $ hyhyhy create
 ```
 
@@ -55,7 +55,7 @@ $ hyhyhy create
 
 Show the structure of your project.
 
-```
+```bash
 $ hyhyhy status
 ```
 
@@ -63,7 +63,7 @@ $ hyhyhy status
 
 Displays a brief summary of the basic functions.
 
-```
+```bash
 $ hyhyhy help
 ```
 
@@ -71,7 +71,7 @@ $ hyhyhy help
 
 For now, you can change the basic variables in the configuration file.
 
-```
+```properties
 [head]
 title = Example presentation by hyhyhy!
 description = A little words...
@@ -82,14 +82,14 @@ build = build/index.html
 
 You can also manipulate additional settings for 'section' tag in html.
 
-```
+```properties
 [sections]
 5 = data-bespoke-state="green" class="light"
 ```
 
 The output for the above should be the following code. (for 5 slide)
 
-```
+```html
 <section data-bespoke-state="green" class="light">...</section>
 ```
 
@@ -114,7 +114,7 @@ The output for the above should be the following code. (for 5 slide)
 
 ## Quickstart
 
-```
+```bash
 $ pip install hyhyhy
 $ mkdir new_empty_presentation
 $ cd new_empty_presentation
