@@ -8,10 +8,9 @@ Presentation nano-framework.
 
 ## Introduction
 
-It is a tool for easily creating pure and simple HTML5 presentations or websites.
+It's a tool for easily creating pure and simple HTML5 presentations or websites.
 
-Comes with a broad range of features including nested slides, markdown contents and a JavaScript API.
-It combines everything into a unified whole that you can use.
+Comes with a broad range of features including nested slides, markdown contents and a JavaScript API. It combines everything into a unified whole that you can use.
 
 #### More reading:
 
