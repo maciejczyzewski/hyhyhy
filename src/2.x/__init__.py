@@ -65,8 +65,7 @@ class Cli(object):
 
     class FileChangeHandler(FileSystemEventHandler):
         def on_any_event(self, event):
-            if not self.running:
-                Cli().build()
+            Cli().build()
 
     def build(self):
         if os.path.exists(u'build'):
@@ -109,6 +108,7 @@ class Cli(object):
 
 
     def watch(self):
+        self.build()
         event_handler = self.FileChangeHandler()
         observer = Observer()
         for path in [u'assets', u'sections', config.file]:
