@@ -103,10 +103,10 @@ You can also manipulate additional settings for 'section' tag in html.
 
 ```properties
 [sections]
-5 = data-bespoke-state="green" class="light"
+6 = data-bespoke-state="green" class="light"
 ```
 
-The output for the above should be the following code. (for 5 slide)
+The output for the above should be the following code. (for 6 slide)
 
 ```html
 <section data-bespoke-state="green" class="light">...</section>
