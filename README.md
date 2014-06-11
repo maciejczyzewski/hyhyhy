@@ -15,13 +15,12 @@ Comes with a broad range of features including nested slides, markdown contents 
 #### More reading:
 
 - [Installation](#installation): Step-by-step instructions for getting hyhyhy running on your computer.
-- [Usage](#usage): List of commands that you can use.
+- [Usage](#usage): List of commands.
 - [Configuration](#configuration): Explanation of configure the tool.
 - [Presentation](#presentation): Explanation of use the generated project.
 - [Dependencies](#dependencies): List of used dependencies.
-- [Quickstart](#quickstart): Simple tutorial.
+- [Quickstart](#quickstart): Step-by-step instructions for creating new project.
 - [Example](#example): Preview in action.
-- [Presentation](#presentation): Explanation of handle.
 - [Supported browsers](#supported-browsers): Explanation of browser support and fallbacks.
 - [Contributing](#contributing): Explanation of how you can join the project.
 - [License](#license): Clarification of certain rules.
