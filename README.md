@@ -6,6 +6,27 @@
 
 Presentation nano-framework.
 
+## Introduction
+
+It is a tool for easily creating pure and simple HTML5 presentations or websites.
+
+Comes with a broad range of features including nested slides, markdown contents and a JavaScript API.
+It combines everything into a unified whole that you can use.
+
+#### More reading:
+
+- [Installation](#installation): Step-by-step instructions for getting hyhyhy running on your computer.
+- [Usage](#usage): List of commands that you can use.
+- [Configuration](#configuration): Explanation of how to configure the tool.
+- [Presentation](#presentation): Explanation of how to use the generated project.
+- [Dependencies](#dependencies): List of used dependencies.
+- [Quickstart](#quickstart): Simple tutorial.
+- [Example](#example): Preview in action.
+- [Presentation](#presentation): Explanation of how to handle.
+- [Supported browsers](#supported-browsers): Explanation of browser support and fallbacks.
+- [Contributing](#contributing): Explanation of how you can join the project.
+- [License](#license): Clarification of certain rules.
+
 ## Installation
 
 Binary installers for the latest released version are available at the [Python
