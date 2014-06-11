@@ -168,3 +168,7 @@ Please feel free to contribute to this project! Pull requests and feature reques
 ## License
 
 See LICENSE file in this repository.
+
+## Thanks
+
+* Kim Thoenen (@Chive)
