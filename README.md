@@ -171,4 +171,4 @@ See LICENSE file in this repository.
 
 ## Thanks
 
-* Kim Thoenen (@Chive)
+* Kim Thoenen ([@Chive](https://github.com/Chive))
