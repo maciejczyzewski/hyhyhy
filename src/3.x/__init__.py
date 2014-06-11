@@ -34,6 +34,7 @@ hyhyhy CLI
 Usage:
   hyhyhy create
   hyhyhy build
+  hyhyhy watch
   hyhyhy status
   hyhyhy help
   hyhyhy -h | --help
@@ -47,15 +48,24 @@ Options:
 import os
 import sys
 import shutil
+import time
 
 from rjsmin import jsmin
 from rcssmin import cssmin
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
 
 from hyhyhy.collector import collector
 from hyhyhy.config import config
 from hyhyhy.middleware import (num, prf)
 
 class Cli:
+
+    class FileChangeHandler(FileSystemEventHandler):
+        def on_any_event(self, event):
+            if not self.running:
+                Cli().build()
+
     def build(self):
         if os.path.exists('build'):
             shutil.rmtree('build')
@@ -96,6 +106,20 @@ class Cli:
         print (prf('OK'), 'Saved in', config.settings.get('core', 'build'), '->',
                config.settings.get('head', 'title'))
 
+    def watch(self):
+        event_handler = self.FileChangeHandler()
+        observer = Observer()
+        for path in ['assets', 'sections', config.file]:
+            observer.schedule(event_handler, path, recursive=True)
+        observer.start()
+
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            observer.stop()
+
+        observer.join()
 
     def create(self):
         if not os.path.exists('assets'):
@@ -133,6 +157,8 @@ def main():
 
     if len(sys.argv) == 2 and sys.argv[1] == 'build':
         cli.build()
+    elif len(sys.argv) == 2 and sys.argv[1] == 'watch':
+        cli.watch()
     elif len(sys.argv) == 2 and sys.argv[1] == 'create':
         cli.create()
     elif len(sys.argv) == 2 and sys.argv[1] == 'status':

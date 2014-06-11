@@ -23,7 +23,8 @@ setup(
         'rjsmin',
         'rcssmin',
         'markdown',
-        'jinja2'
+        'jinja2',
+        'watchdog',
     ],
     author='Maciej A. Czyzewski',
     author_email='maciejanthonyczyzewski@gmail.com',
