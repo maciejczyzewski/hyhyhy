@@ -62,6 +62,14 @@ When you build your project it will generate a static version in the build folde
 $ hyhyhy build
 ```
 
+### Build
+
+Continously monitor the filesystem and wait for changes to rebuild to project automatically.
+
+```bash
+$ hyhyhy watch
+```
+
 ### Create
 
 Creates a default structure.
