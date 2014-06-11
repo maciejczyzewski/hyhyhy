@@ -62,7 +62,7 @@ When you build your project it will generate a static version in the build folde
 $ hyhyhy build
 ```
 
-### Build
+### Watch
 
 Continously monitor the filesystem and wait for changes to rebuild to project automatically.
 
