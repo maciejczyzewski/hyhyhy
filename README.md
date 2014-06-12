@@ -91,7 +91,7 @@ $ hyhyhy status
 Displays a brief summary of the basic functions.
 
 ```bash
-$ hyhyhy help
+$ hyhyhy --help
 ```
 
 ## Configuration

@@ -108,8 +108,7 @@ class Cli(object):
 
                     print prf(u'OK'), u'Compressing file', nm, u'...'
 
-        print prf(u'OK'), u'Saved in', config.settings.get(u'core', u'build'), u'->',
-               config.settings.get(u'head', u'title')
+        print prf(u'OK'), u'Saved in', config.settings.get(u'core', u'build'), u'->', config.settings.get(u'head', u'title')
 
     def watch(self):
         self.build()
@@ -147,8 +146,7 @@ class Cli(object):
 
 
     def status(self):
-        print prf(u'OK'), u'Structure of project', u'[' + unicode(len(config.sections))
-               + u' slides]'
+        print prf(u'OK'), u'Structure of project', u'[' + unicode(len(config.sections)) + u' slides]'
 
         print os.popen(u''' find . -print 2>/dev/null | awk '!/\.$/ { \
             for (i=1; i<NF; i++) { \
