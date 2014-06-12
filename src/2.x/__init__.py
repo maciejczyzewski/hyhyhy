@@ -29,20 +29,22 @@
 #
 
 u"""
-hyhyhy CLI
+hyhyhy - Presentation nano-framework.
+
+It's a tool for easily creating pure and 
+simple HTML5 presentations or websites...
 
 Usage:
   hyhyhy create
   hyhyhy build
   hyhyhy watch
   hyhyhy status
-  hyhyhy help
-  hyhyhy -h | --help
-  hyhyhy -V | --version
+  hyhyhy (-h | --help)
+  hyhyhy --version
 
 Options:
-  -h, --help             Help information.
-  -V, --version          Show version.
+  -h --help     Show this screen.
+  --version     Show version.
 """
 
 from __future__ import with_statement
@@ -55,11 +57,13 @@ from rjsmin import jsmin
 from rcssmin import cssmin
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
+from docopt import docopt
 
 from hyhyhy.collector import collector
 from hyhyhy.config import config
 from hyhyhy.middleware import (num, prf)
 from io import open
+
 
 class Cli(object):
 
@@ -104,8 +108,8 @@ class Cli(object):
 
                     print prf(u'OK'), u'Compressing file', nm, u'...'
 
-        print prf(u'OK'), u'Saved in', config.settings.get(u'core', u'build'), u'->', config.settings.get(u'head', u'title')
-
+        print prf(u'OK'), u'Saved in', config.settings.get(u'core', u'build'), u'->',
+               config.settings.get(u'head', u'title')
 
     def watch(self):
         self.build()
@@ -143,7 +147,8 @@ class Cli(object):
 
 
     def status(self):
-        print prf(u'OK'), u'Structure of project', u'[' + unicode(len(config.sections)) + u' slides]'
+        print prf(u'OK'), u'Structure of project', u'[' + unicode(len(config.sections))
+               + u' slides]'
 
         print os.popen(u''' find . -print 2>/dev/null | awk '!/\.$/ { \
             for (i=1; i<NF; i++) { \
@@ -156,16 +161,18 @@ class Cli(object):
 def main():
     cli = Cli()
 
-    if len(sys.argv) == 2 and sys.argv[1] == u'build':
+    arguments = docopt(__doc__)
+
+    if arguments[u'build'] == True:
         cli.build()
-    elif len(sys.argv) == 2 and sys.argv[1] == u'watch':
+    if arguments[u'watch'] == True:
         cli.watch()
-    elif len(sys.argv) == 2 and sys.argv[1] == u'create':
+    if arguments[u'create'] == True:
         cli.create()
-    elif len(sys.argv) == 2 and sys.argv[1] == u'status':
+    if arguments[u'status'] == True:
         cli.status()
     else:
-        print __doc__
+        print arguments
 
 
 if __name__ == u'__main__':

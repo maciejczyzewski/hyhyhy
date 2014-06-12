@@ -25,6 +25,7 @@ setup(
         'markdown',
         'jinja2',
         'watchdog',
+        'docopt',
     ],
     author='Maciej A. Czyzewski',
     author_email='maciejanthonyczyzewski@gmail.com',

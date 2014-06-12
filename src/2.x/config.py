@@ -34,6 +34,7 @@ import glob
 
 from hyhyhy.middleware import num
 
+
 class Config(object):
 	def __init__(self, file):
 		self.path = [os.path.abspath(__file__ + u'/../../lib/structure/') + u'/',
