@@ -135,6 +135,8 @@ The output for the above should be the following code. (for 6 slide)
 	* rcssmin
 	* markdown
 	* jinja2
+	* watchdog
+	* docopt
 - Javascript
 	* prism.js
 	* bespoke.js
