@@ -9,7 +9,7 @@ pkgdir = {
 
 setup(
     name='hyhyhy',
-    version='1.1.6',
+    version='1.1.7',
     packages=['hyhyhy', 'lib'],
     package_dir=pkgdir,
     include_package_data=True,
