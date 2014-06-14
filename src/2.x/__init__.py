@@ -114,7 +114,7 @@ class Cli(object):
         self.build()
         event_handler = self.FileChangeHandler()
         observer = Observer()
-        for path in [u'assets', u'sections', config.file]:
+        for path in [u'assets', u'sections']:
             observer.schedule(event_handler, path, recursive=True)
         observer.start()
 
@@ -161,13 +161,13 @@ def main():
 
     arguments = docopt(__doc__)
 
-    if arguments[u'build'] == True:
+    if   arguments[u'build'] == True:
         cli.build()
-    if arguments[u'watch'] == True:
+    elif arguments[u'watch'] == True:
         cli.watch()
-    if arguments[u'create'] == True:
+    elif arguments[u'create'] == True:
         cli.create()
-    if arguments[u'status'] == True:
+    elif arguments[u'status'] == True:
         cli.status()
     else:
         print arguments
