@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/hyhyhy/master/screenshot.png"/>
+  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/hyhyhy/master/screenshot-1.png"/>
 </div>
 
 # hyhyhy [![Build Status](https://travis-ci.org/MaciejCzyzewski/hyhyhy.png)](https://travis-ci.org/MaciejCzyzewski/hyhyhy) [![PyPI version](https://badge.fury.io/py/hyhyhy.png)](http://badge.fury.io/py/hyhyhy)
@@ -52,6 +52,10 @@ You can create a new project by generating structure like this. Make sure that t
 ```
 
 ## Usage
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/hyhyhy/master/screenshot-2.png"/>
+</div>
 
 ### Build
 
