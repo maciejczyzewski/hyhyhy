@@ -32,7 +32,7 @@ import os
 
 
 def num(path):
-    return os.path.splitext(os.path.basename(path))[0]
+    return int(os.path.splitext(os.path.basename(path))[0])
 
 
 def prf(code):
