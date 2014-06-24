@@ -98,6 +98,14 @@ Displays a brief summary of the basic functions.
 $ hyhyhy --help
 ```
 
+### Version
+
+Displays a version.
+
+```bash
+$ hyhyhy --version
+```
+
 ## Configuration
 
 For now, you can change the basic variables in the configuration file.
