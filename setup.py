@@ -1,7 +1,18 @@
 import os
+import re
 import sys
 
 from setuptools import setup
+
+base = os.path.dirname(os.path.abspath(__file__))
+
+def version(filename='lib/__init__.py'):
+    with open(os.path.join(base, filename)) as initfile:
+        for line in initfile.readlines():
+            m = re.match("__version__ *= *['\"](.*)['\"]", line)
+            
+            if m:
+                return m.group(1)
 
 pkgdir = {
     'hyhyhy': 'src/%s.x' % sys.version_info[0],
@@ -9,7 +20,7 @@ pkgdir = {
 
 setup(
     name='hyhyhy',
-    version='1.1.8',
+    version=version(),
     packages=['hyhyhy', 'lib'],
     package_dir=pkgdir,
     include_package_data=True,

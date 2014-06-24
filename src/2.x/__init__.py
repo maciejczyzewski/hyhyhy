@@ -39,8 +39,8 @@ Usage:
   hyhyhy build
   hyhyhy watch
   hyhyhy status
-  hyhyhy (-h | --help)
-  hyhyhy --version
+  hyhyhy (--h | --help)
+  hyhyhy (--v | --version)
 
 Options:
   -h --help     Show this screen.
@@ -49,6 +49,7 @@ Options:
 
 from __future__ import with_statement
 import os
+import re
 import sys
 import shutil
 import time
@@ -64,6 +65,17 @@ from hyhyhy.config import config
 from hyhyhy.middleware import (num, prf)
 from io import open
 
+base = os.path.dirname(os.path.abspath(__file__))
+
+def version(filename=u'../lib/__init__.py'):
+    with open(os.path.join(base, filename)) as initfile:
+        for line in initfile.readlines():
+            m = re.match(u"__version__ *= *['\"](.*)['\"]", line)
+
+            if m:
+                __version__ = m.group(1)
+
+__version__ = version()
 
 class Cli(object):
 
@@ -159,7 +171,7 @@ class Cli(object):
 def main():
     cli = Cli()
 
-    arguments = docopt(__doc__)
+    arguments = docopt(__doc__, version=__version__)
 
     if   arguments[u'build'] == True:
         cli.build()
