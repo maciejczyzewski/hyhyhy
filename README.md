@@ -171,6 +171,8 @@ Sample presentation is already in the project. But if you want you can see it li
 
 Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
 
+[![Gitter chat](https://badges.gitter.im/MaciejCzyzewski/hyhyhy.png)](https://gitter.im/MaciejCzyzewski/hyhyhy)
+
 ## License
 
 See LICENSE file in this repository.
