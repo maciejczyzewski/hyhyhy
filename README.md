@@ -37,18 +37,19 @@ $ pip install hyhyhy
 You can create a new project by generating structure like this. Make sure that the destination folder does not exist because it will be overwritten.
 
 ```bash
-|-- assets
-|   |-- index.jinja
-|   |-- scripts
-|   |   |-- main.js
-|   |-- styles
-|   |   |-- main.css
-|-- sections
-|   |-- 1.html
-|   |-- 2.md
-|   |-- ...
-|   |-- n.html
-|-- default.cfg
+hyhyhy
+├── assets
+│   ├── index.jinja
+│   ├── scripts
+│   │   └── main.js
+│   └── styles
+│       └── main.css
+├── sections
+│   ├── 1.html
+│   ├── 2.md
+│   ├── ...
+│   └── n.html
+└── default.cfg
 ```
 
 ## Usage
@@ -174,6 +175,11 @@ Sample presentation is already in the project. But if you want you can see it li
 - Opera 9.64+
 - Chrome
 - IE9, IE10, IE11
+
+## Conceptions
+
+- [ ] pdf, LaTeX presentations
+- [ ] KaTeX (javascript) for maths
 
 ## Contributing
 
