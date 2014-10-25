@@ -60,7 +60,7 @@ You can create a new project by generating structure like this. Make sure that t
 ### Build
 
 This function should splice all your slides/sections in one presentation.
-When you build your project it will generate a static version in the build folder that you can use. 
+When you build your project it will generate a static version in the build folder that you can use.
 
 ```bash
 $ hyhyhy build
@@ -163,7 +163,7 @@ $ hyhyhy create
 $ hyhyhy build
 ```
 
-## Example 
+## Example
 
 Sample presentation is already in the project. But if you want you can see it live [by clicking this link.](http://maciejczyzewski.github.io/hyhyhy/)
 
@@ -178,8 +178,6 @@ Sample presentation is already in the project. But if you want you can see it li
 ## Contributing
 
 Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
-
-[![Gitter chat](https://badges.gitter.im/MaciejCzyzewski/hyhyhy.png)](https://gitter.im/MaciejCzyzewski/hyhyhy)
 
 ## License
 
