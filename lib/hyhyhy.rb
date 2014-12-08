@@ -68,7 +68,7 @@ module Hyhyhy
         Logger.spit("Regeneration.... #{modified} #{added} #{removed}", :output)
         Logger.ahoy()
 
-        Frames.save(options.source, options.destination, Config.all)
+        Frames.save(options.source, options.destination)
       end
       listener.start
       sleep
