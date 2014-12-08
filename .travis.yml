@@ -1,7 +1,4 @@
-language: python
-python:
-  - "2.7"
-  - "3.2"
-  - "3.3"
-  - "3.4"
-script: python setup.py build
+language: ruby
+ruby:
+  - "2.1.4"
+script: gem build hyhyhy.gemspec && gem install ./hyhyhy-0.0.1.gem && hyhyhy
