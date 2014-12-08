@@ -24,7 +24,10 @@ module Hyhyhy
           content.split("\n").each do |option|
             option = option.split(": ", 2)
 
-            if option[0] == nil || option[1] == nil
+            special = "?<>',?[]}{=-)(*&^%$#`~{}"
+            regex = /[#{special.gsub(/./){|char| "\\#{char}"}}]/
+
+            if option[0] == nil || option[1] == nil || option[0] =~ regex
               group = []
               break
             else
