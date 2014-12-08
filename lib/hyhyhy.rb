@@ -61,7 +61,7 @@ module Hyhyhy
 
     Logger.ahoy() # To inform you about what we do...
 
-    Frames.save(options.source, options.destination, Config.all)
+    Frames.save(options.source, options.destination)
 
     if options.watch == true
       listener = Listen.to(options.source, :ignore => /_build/) do |modified, added, removed|

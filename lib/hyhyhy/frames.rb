@@ -74,10 +74,10 @@ module Hyhyhy
       return Erubis::Eruby.new(template).result(locals)
     end
 
-    def save(source, destination, config)
+    def save(source, destination)
       @slides = []
 
-      Config.load(source + '/.hyhyhy')
+      config = Config.load(source + '/.hyhyhy')
 
       Frames.explore(source)
 
