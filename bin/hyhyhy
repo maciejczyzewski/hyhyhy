@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+require 'hyhyhy'
+require 'rubygems'
+require 'commander/import'
+
+program :name, 'hyhyhy'
+program :version, Hyhyhy::VERSION
+program :description, Hyhyhy::DESCRIPTION
+program :help, 'Author', 'M. A. Czyzewski <maciejanthonyczyzewski@gmail.com>'
+
+Hyhyhy.initialize
+
+command :new do |c|
+  c.syntax = 'hyhyhy new'
+  c.description = 'Forms the skeleton of a new presentation.'
+  c.option '--title STRING', String, 'Title of presentation.'
+  c.option '--description STRING', String, 'A brief summary.'
+  c.option '--author STRING', String, 'Who did this miracle.'
+  c.action do |args, options|
+    options.default :title => nil
+    options.default :description => nil
+    options.default :author => nil
+
+    Hyhyhy.new(args, options)
+  end
+end
+
+command :build do |c|
+  c.syntax = 'hyhyhy build PATH'
+  c.description = 'Splice all your slides/sections in one presentation.'
+  c.option '--source STRING', String, 'Source directory (defaults to ./)'
+  c.option '--destination STRING', String, 'Destination directory (defaults to ./_build)'
+  c.option '--watch', 'Enable auto-regeneration of the site when files are modified.'
+  c.action do |args, options|
+    options.default :watch => false
+    options.default :source => './'
+    options.default :destination => './_build'
+
+    Hyhyhy.build(args, options)
+  end
+end
+
+command :serve do |c|
+  c.syntax = 'hyhyhy serve PATH'
+  c.description = 'Serve your presentation locally.'
+  c.option '--open', 'Launch in default browser.'
+  c.action do |args, options|
+    options.default :open => false
+
+    Hyhyhy.serve(args, options)
+  end
+end
+
+
+
+
