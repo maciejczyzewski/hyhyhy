@@ -63,6 +63,12 @@ module Hyhyhy
 
     Frames.save(options.source, options.destination)
 
+    if options.serve == true
+      Thread.new() do
+        self.serve(args, options)
+      end
+    end
+
     if options.watch == true
       listener = Listen.to(options.source, :ignore => /_build/) do |modified, added, removed|
         Logger.spit("Regeneration.... #{modified} #{added} #{removed}", :output)
@@ -89,7 +95,7 @@ module Hyhyhy
 
     server = WEBrick::HTTPServer.new :Port => 4000
     server.mount "/", WEBrick::HTTPServlet::FileHandler, args[0]
-    trap('INT') { server.stop }
+    trap('INT') { server.stop; Process.exit!(true) }
     server.start
   end
 end

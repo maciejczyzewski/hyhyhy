@@ -31,8 +31,10 @@ command :build do |c|
   c.description = 'Splice all your slides/sections in one presentation.'
   c.option '--source STRING', String, 'Source directory (defaults to ./)'
   c.option '--destination STRING', String, 'Destination directory (defaults to ./_build)'
+  c.option '--serve', 'Runs with the "serve" command.'
   c.option '--watch', 'Enable auto-regeneration of the site when files are modified.'
   c.action do |args, options|
+    options.default :serve => false
     options.default :watch => false
     options.default :source => './'
     options.default :destination => './_build'
