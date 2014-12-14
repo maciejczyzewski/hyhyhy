@@ -1,8 +1,0 @@
-{
-  "name": "whats-new-in-hyhyhy",
-  "dependencies": {
-    "jquery": "*",
-    "katex": "*"
-  },
-  "private": true
-}
