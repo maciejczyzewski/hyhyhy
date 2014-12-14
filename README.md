@@ -58,7 +58,7 @@ hyhyhy
 
 ## Usage
 
-### new
+### New
 
 Creates a default structure.
 
