@@ -95,7 +95,7 @@ module Hyhyhy
       Frames.explore(source)
 
       FileUtils.copy_entry source + '/_assets', destination
-      FileUtils.copy_entry source + '/_includes', destination + '/_includes'
+      FileUtils.copy_entry source + '/_includes', destination + '/includes'
 
       FileUtils.rm(destination + '/_includes/bower.json')
 
