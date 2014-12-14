@@ -1,0 +1,17 @@
+<!-- Javascripts -->
+<script type="text/javascript"
+        src="_includes/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript"
+        src="_includes/d3/d3.min.js"></script>
+<script type="text/javascript"
+        src="_includes/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="_includes/metrics-graphics/js/metricsgraphics.min.js"></script>
+
+<!-- Stylesheets -->
+<link media="all" rel="stylesheet" type="text/css"
+      href="_includes/bootstrap/dist/css/bootstrap.css" />
+<link media="all" rel="stylesheet" type="text/css"
+      href="_includes/metrics-graphics/css/metricsgraphics.css" />
+<link media="all" rel="stylesheet" type="text/css"
+      href="_includes/metrics-graphics/css/metricsgraphics-demo.css" />
