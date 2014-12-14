@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="robots" content="index, follow, archive" />
+    <meta name="referrer" content="always" />
+
+    <!-- Content -->
+    <meta name="description" property="description"
+          content="<%= description %>" />
+    <meta name="author" content="<%= author %>" />
+
+    <title><%= title %></title>
+
+    <!-- Includes -->
+    <% for i in includes %>
+        <%= i[:package] %>
+    <% end %>
+</head>
+<body>
+    <article id="presentation">
+    <% for s in slides %>
+        <section <%= s[:header] %>>
+            <%= s[:document] %>
+        </section>
+    <% end %>
+    </article>
+
+    <!-- Stylesheets -->
+    <link media="all" rel="stylesheet" type="text/css"
+          href="stylesheets/main.css" />
+
+    <!-- Javascripts -->
+    <script type="text/javascript" src="javascripts/main.js"></script>
+    <script>hyhyhy.from('#presentation', { bullets: "ol li, .bullet", hash: true, keys: true, fullscreen: true, progress: true, scale: true, state: true, touch: true });</script>
+</body>
+</html>

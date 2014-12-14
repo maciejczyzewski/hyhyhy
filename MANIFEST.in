@@ -1,5 +1,0 @@
-recursive-include lib *
-recursive-include src *
-include LICENSE
-include README.md
-include screenshot.png

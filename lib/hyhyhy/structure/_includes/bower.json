@@ -1,0 +1,9 @@
+{
+  "name": "Bower packages",
+  "dependencies": {
+    "prism": "git@github.com:LeaVerou/prism#gh-pages",
+    "metrics-graphics": "*",
+    "katex": "*"
+  },
+  "private": true
+}

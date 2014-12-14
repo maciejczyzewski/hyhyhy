@@ -1,16 +1,16 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/hyhyhy/master/screenshot-1.png"/>
+  <img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2021.40.38.png"/>
 </div>
 
-# hyhyhy [![Build Status](https://travis-ci.org/MaciejCzyzewski/hyhyhy.png)](https://travis-ci.org/MaciejCzyzewski/hyhyhy) [![PyPI version](https://badge.fury.io/py/hyhyhy.png)](http://badge.fury.io/py/hyhyhy)
+# hyhyhy
 
-Presentation nano-framework.
+Pure & Professional presentations
 
 ## Introduction
 
 It's a tool for easily creating pure and simple HTML5 presentations or websites.
 
-Comes with a broad range of features including nested slides, markdown contents and a JavaScript API. It combines everything into a unified whole that you can use.
+Comes with a broad range of features: Markdown, Nested slides, Math typesetting, Compatibility, Syntax highlighter, Javascript API, Convenient skeleton...
 
 #### More reading:
 
@@ -27,35 +27,47 @@ Comes with a broad range of features including nested slides, markdown contents 
 
 ## Installation
 
-Binary installers for the latest released version are available at the [Python
-package index.](http://pypi.python.org/pypi/hyhyhy/)
+Binary installers for the latest released version are available at the [RubyGems.](https://rubygems.org/gems/hyhyhy)
 
 ```bash
-$ pip install hyhyhy
+$ gem install hyhyhy
 ```
 
 You can create a new project by generating structure like this. Make sure that the destination folder does not exist because it will be overwritten.
 
 ```bash
 hyhyhy
-├── assets
-│   ├── index.jinja
-│   ├── scripts
+├── _assets
+│   ├── javascripts
 │   │   └── main.js
-│   └── styles
+│   └── stylesheets
 │       └── main.css
-├── sections
-│   ├── 1.html
-│   ├── 2.md
+├── _includes
+│   └── bower.json
+├── _layouts
+│   └── default.erb
+├── _slides
+│   ├── 1.introduction.md
+│   ├── 2.packages.md
 │   ├── ...
 │   └── n.html
-└── default.cfg
+├── .bowerrc
+├── .hyhyhy
+└── README.md
 ```
 
 ## Usage
 
+### new
+
+Creates a default structure.
+
+```bash
+$ hyhyhy new
+```
+
 <div align="center">
-  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/hyhyhy/master/screenshot-2.png"/>
+  <img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.07.43.png"/>
 </div>
 
 ### Build
@@ -67,29 +79,21 @@ When you build your project it will generate a static version in the build folde
 $ hyhyhy build
 ```
 
-### Watch
+<div align="center">
+  <img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.10.20.png"/>
+</div>
 
-Continously monitor the filesystem and wait for changes to rebuild to project automatically.
+### Serve
 
-```bash
-$ hyhyhy watch
-```
-
-### Create
-
-Creates a default structure.
+Serve your presentation locally.
 
 ```bash
-$ hyhyhy create
+$ hyhyhy serve
 ```
 
-### Status
-
-Show the structure of your project.
-
-```bash
-$ hyhyhy status
-```
+<div align="center">
+  <img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.10.56.png"/>
+</div>
 
 ### Help
 
@@ -111,26 +115,12 @@ $ hyhyhy --version
 
 For now, you can change the basic variables in the configuration file.
 
-```properties
-[head]
-title = Example presentation by hyhyhy!
-description = A little words...
-
-[core]
-build = build/index.html
-```
-
-You can also manipulate additional settings for 'section' tag in html.
-
-```properties
-[sections]
-6 = data-bespoke-state="green" class="light"
-```
-
-The output for the above should be the following code. (for 6 slide)
-
-```html
-<section data-bespoke-state="green" class="light">...</section>
+```json
+{
+  "title": "hyhyhy",
+  "description": "Pure & Professional presentations",
+  "author": "Maciej A. Czyzewski"
+}
 ```
 
 ## Presentation
@@ -143,30 +133,31 @@ The output for the above should be the following code. (for 6 slide)
 
 ## Dependencies
 
-- Python (>= 2.7.0)
-	* rjsmin
-	* rcssmin
-	* markdown
-	* jinja2
-	* watchdog
-	* docopt
+- Ruby (>= 2.0.0)
+    * commander
+    * kramdown
+    * launchy
+    * listen
+    * erubis
+    * bundler
+    * rake
 - Javascript
-	* prism.js
-	* bespoke.js
+    * prism.js
+    * MetricsGraphics.js
+    * katex.js
 
 ## Quickstart
 
 ```bash
-$ pip install hyhyhy
-$ mkdir new_empty_presentation
+$ gem install hyhyhy
+$ hyhyhy new
 $ cd new_empty_presentation
-$ hyhyhy create
-$ hyhyhy build
+$ hyhyhy build --watch --serve
 ```
 
 ## Example
 
-Sample presentation is already in the project. But if you want you can see it live [by clicking this link.](http://maciejczyzewski.github.io/hyhyhy/)
+Sample presentation is already in the project. But if you want you can see it live [by clicking this link.](http://maciejczyzewski.me/hyhyhy)
 
 ## Supported browsers
 
@@ -178,8 +169,7 @@ Sample presentation is already in the project. But if you want you can see it li
 
 ## Conceptions
 
-- [ ] pdf, LaTeX presentations
-- [ ] KaTeX (javascript) for maths
+- [ ] speaker notes
 
 ## Contributing
 
