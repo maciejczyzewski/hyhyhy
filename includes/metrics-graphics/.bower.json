@@ -1,0 +1,61 @@
+{
+  "name": "metrics-graphics",
+  "version": "1.1.0",
+  "main": [
+    "js/metricsgraphics.min.js",
+    "css/metricsgraphics.css"
+  ],
+  "dependencies": {
+    "jquery": ">=1.11.1",
+    "bootstrap": ">=3.1.1",
+    "d3": ">=3.4.8"
+  },
+  "ignore": [
+    ".DS_Store",
+    ".git",
+    ".gitignore",
+    "css/metrics-graphics-demo.css",
+    "css/highlightjs-default.css",
+    "data",
+    "images/divider.png",
+    "images/og-logo.png",
+    "images/logo.svg",
+    "js/main.js",
+    "js/metricsgraphics.js",
+    "js/lib",
+    "src",
+    "make.py",
+    "index.htm",
+    "dev.htm",
+    "examples.htm",
+    "interactive-demo.htm"
+  ],
+  "license": "MPL-2.0",
+  "authors": [
+    "Ali Almossawi",
+    "Ali Almossawi (http://twitter.com/alialmossawi)>",
+    "Hamilton Ulmer",
+    "Hamilton Ulmer (http://twitter.com/hamiltonulmer)>"
+  ],
+  "homepage": "http://metricsgraphicsjs.org",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mozilla/metrics-graphics.git"
+  },
+  "keywords": [
+    "metrics-graphics",
+    "metricsgraphicsjs",
+    "metricsgraphics",
+    "metricsgraphics.js",
+    "d3 charts"
+  ],
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.0",
+    "commit": "15a4703db568342043f156b5635d10b17ebe98cb"
+  },
+  "_source": "git://github.com/mozilla/metrics-graphics.git",
+  "_target": "*",
+  "_originalSource": "metrics-graphics"
+}
