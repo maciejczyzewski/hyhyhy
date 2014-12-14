@@ -2,7 +2,7 @@
   <img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2021.40.38.png"/>
 </div>
 
-# hyhyhy
+# hyhyhy [![Gem Version](https://badge.fury.io/rb/hyhyhy.svg)](http://badge.fury.io/rb/hyhyhy)
 
 Pure & Professional presentations
 
