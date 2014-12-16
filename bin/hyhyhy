@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'hyhyhy'
+require 'hyhyhy/version'
+
 require 'rubygems'
 require 'commander/import'
 
