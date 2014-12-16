@@ -8,7 +8,7 @@ Pure & Professional presentations
 
 ## Introduction
 
-It's a tool for easily creating pure and simple HTML5 presentations or websites.
+It's a tool for creating nice looking HTML5 presentations.
 
 Comes with a broad range of features: __Markdown, Nested slides, Math typesetting, Compatibility, Syntax highlighter, Javascript API, Convenient skeleton...__
 

@@ -1,5 +1,5 @@
 module Hyhyhy
-  VERSION = "0.0.8"
+  VERSION = "0.0.9"
   SUMMARY = %q{Pure & Professional presentations}
-  DESCRIPTION = %q{A tool for easily creating pure and simple HTML5 presentations or websites.}
+  DESCRIPTION = %q{A tool for creating nice looking HTML5 presentations.}
 end
