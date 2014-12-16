@@ -37,24 +37,24 @@ $ gem install hyhyhy
 You can create a new project by generating structure like this. Make sure that the destination folder does not exist because it will be overwritten.
 
 ```bash
-hyhyhy
-├── _assets
-│   ├── javascripts
-│   │   └── main.js
-│   └── stylesheets
-│       └── main.css
-├── _includes
-│   └── bower.json
-├── _layouts
-│   └── default.erb
-├── _slides
-│   ├── 1.introduction.md
-│   ├── 2.packages.md
-│   ├── ...
-│   └── n.html
-├── .bowerrc
-├── .hyhyhy
-└── README.md
+my-new-presentation
+├── _assets                # Assets, own catalogs
+│   ├── javascripts        # Scripts
+│   │   └── main.js        # Core (presentation)
+│   └── stylesheets        # Styles
+│       └── main.css       # Default
+├── _includes              # Bower components
+│   └── bower.json         # Package list
+├── _layouts               # Layouts
+│   └── default.erb        # Basic template
+├── _slides                # Slides/Sections
+│   ├── 1.introduction.md  # First group
+│   ├── 2.packages.md      # Second group
+│   ├── ...                # ...
+│   └── n.html             # Last gruop
+├── .bowerrc               # Bower configure
+├── .hyhyhy                # Hyhyhy configure
+└── README.md              # Simplified guide
 ```
 
 ## Commands
@@ -114,7 +114,7 @@ $ hyhyhy --version
 
 ## Usage
 
-NOT READY, YET.
+NOT READY, YET! SEE MAIN PRESENTATION...
 
 ## Configuration
 
