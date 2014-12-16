@@ -15,7 +15,8 @@ Comes with a broad range of features: __Markdown, Nested slides, Math typesettin
 #### More reading:
 
 - [Installation](#installation): Step-by-step instructions for getting hyhyhy running on your computer.
-- [Usage](#usage): List of commands.
+- [Commands](#commands): List of commands.
+- [Usage](#usage): Instructions stating how to use the framework.
 - [Configuration](#configuration): Explanation of configure the tool.
 - [Presentation](#presentation): Explanation of use the generated project.
 - [Dependencies](#dependencies): List of used dependencies.
@@ -56,7 +57,7 @@ hyhyhy
 └── README.md
 ```
 
-## Usage
+## Commands
 
 ### New
 
@@ -110,6 +111,10 @@ Displays a version.
 ```bash
 $ hyhyhy --version
 ```
+
+## Usage
+
+NOT READY, YET.
 
 ## Configuration
 
