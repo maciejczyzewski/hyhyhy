@@ -93,9 +93,11 @@
 <div style="position: fixed; top: 25px; left: 25px; border: 0;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://maciejczyzewski.me/hyhyhy/" data-text="Pure &amp; Professional presentations
 " data-via="_czyzewski">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
-        </section>
-        <section >
-            <p><img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2021.35.14.png" style="width: 600px;" /></p>
+
+<!-- Help -->
+<style>.help{-webkit-animation-duration:2s;-webkit-animation-name:help;-webkit-animation-direction:alternate;-webkit-animation-iteration-count:infinite;-moz-animation-duration:2s;-moz-animation-name:help;-moz-animation-direction:alternate;-moz-animation-iteration-count:infinite;-o-animation-duration:2s;-o-animation-name:help;-o-animation-direction:alternate;-o-animation-iteration-count:infinite;animation-duration:2s;animation-name:help;animation-direction:alternate;animation-iteration-count:infinite;opacity:0}@-webkit-keyframes help{0%{opacity:0}100%{opacity:1}}@-moz-keyframes help{0%{opacity:0}100%{opacity:1}}@-o-keyframes help{0%{opacity:0}100%{opacity:1}}@keyframes help{0%{opacity:0}100%{opacity:1}}</style>
+
+<div class="help" style="position: fixed; bottom: 25px; right: 25px; border: 0; font-size: 10px;">PRESS ENTER</div>
         </section>
         <section >
             <p><img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2021.40.38.png" style="width: 600px;" /></p>
@@ -161,89 +163,104 @@ Through integration of the <a href="http://bower.io/">Bower</a>, you can use wha
 <div class="equation" data-expr="\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)"></div>
         </section>
         <section >
-            <h1 id="usage">Usage</h1>
+            <h1 id="bquickstartb---a-hrefhttpsrubygemsorggemshyhyhyrubygemsa"><b>Quickstart</b> - <a href="https://rubygems.org/gems/hyhyhy">RubyGems</a></h1>
 
-<p>It is so easy that a <u>monkey</u> could do your presentation…</p>
-        </section>
-        <section >
-            <ol style="font-size: 25px;">
-    <li>new</li>
-    <li>build</li>
-    <li>serve</li>
-</ol>
-        </section>
-        <section >
-            <p><b>new</b> - command</p>
+<p><img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2021.35.14.png" style="width: 600px;" /></p>
 
-<p><img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.07.43.png" style="width: 600px;" /></p>
+<p><i>Optionally, you can install <a href="http://bower.io/#install-bower">Bower</a>.</i></p>
         </section>
-        <section >
-            <p><b>build</b> - command</p>
+        <section data-hyhyhy-state='structure'>
+            <style>article.hyhyhy-parent.structure { background: #f5f5f5; }</style>
 
-<p><img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.10.20.png" style="width: 600px;" /></p>
+<pre><code>my-new-presentation
+├── _assets                # Assets, own catalogs
+│   ├── javascripts        # Scripts
+│   │   └── main.js        # Core (presentation)
+│   └── stylesheets        # Styles
+│       └── main.css       # Default
+├── _includes              # Bower components
+│   └── bower.json         # Package list
+├── _layouts               # Layouts
+│   └── default.erb        # Basic template
+├── _slides                # Slides/Sections
+│   ├── 1.introduction.md  # First group
+│   ├── 2.packages.md      # Second group
+│   ├── ...                # ...
+│   └── n.html             # Last gruop
+├── .bowerrc               # Bower configure
+├── .hyhyhy                # Hyhyhy configure
+└── README.md              # Simplified guide
+</code></pre>
         </section>
         <section >
-            <p><b>serve</b> - command</p>
+            <p><b>Commands</b></p>
 
-<p><img src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.10.56.png" style="width: 600px;" /></p>
+<p><img class="bullet" src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.07.43.png" style="width: 600px; margin-bottom: -75px;" /></p>
+
+<p><img class="bullet" src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.10.20.png" style="width: 600px; margin-bottom: -75px;" /></p>
+
+<p><img class="bullet" src="https://dl.dropboxusercontent.com/u/103345209/Screenshots/Screenshot%202014-12-14%2022.10.56.png" style="width: 600px; margin-bottom: -75px;" /></p>
         </section>
         <section >
-            <h1 id="shortcut">Shortcut</h1>
+            <h1 id="bshortcutb"><b>Shortcut</b></h1>
 
 <pre><code class="language-bash">$ hyhyhy build --watch --serve
 </code></pre>
 
 <p><br />Pending changes and serves it on <i>localhost:4000</i></p>
         </section>
-        <section >
-            <h1 id="structure">Structure</h1>
+        <section data-hyhyhy-state='slides'>
+            <style>article.hyhyhy-parent.slides { background: #272822; }</style>
 
-<p>You can modify and customize it. Tool generates static presentation to build directory.</p>
-        </section>
-        <section >
-            <p><b>before</b></p>
+<style>
+    article.hyhyhy-parent.slides div.separator {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 50%;
+        border-right: 3px solid #fff;
+        height: 100%;
+        z-index: 1;
+    }
 
-<pre><code>hyhyhy
-├── _assets
-│   ├── javascripts
-│   │   └── main.js
-│   └── stylesheets
-│       └── main.css
-├── _includes
-│   └── bower.json
-├── _layouts
-│   └── default.erb
-├── _slides
-│   ├── 1.introduction.md
-│   ├── 2.packages.md
-│   ├── ...
-│   └── n.html
-├── .bowerrc
-├── .hyhyhy
-└── README.md
-</code></pre>
-        </section>
-        <section >
-            <p><b>after</b></p>
+    article.hyhyhy-parent.slides div.background {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        width: 50%;
+        height: 100%;
+        z-index: 0;
+        background: #fff;
+    }
 
-<pre><code>hyhyhy
-├── _build
-│   ├── _includes
-│   ├── javascripts
-│   │   └── main.js
-│   ├── stylesheets
-│   │   └── main.css
-│   └── index.html
-└── ...
-</code></pre>
-        </section>
-        <section >
-            <h1 id="slides">Slides</h1>
+    article.hyhyhy-parent.slides pre {
+        border-radius: 0px;
+        width: 50%;
+        position: absolute;
+        left: 0px;
+        top: 25%;
+        text-align: right;
+    }
 
-<p>Can be written in anything. Markdown, Textile, Text, HTML5…</p>
-        </section>
-        <section >
-            <p><b>before<b></b></b></p>
+    article.hyhyhy-parent.slides pre:last-child,
+    article.hyhyhy-parent.slides div.last {
+        border-radius: 4px;
+        width: 50%;
+        position: absolute;
+        right: 0px;
+        top: 25%;
+        left: inherit;
+        text-align: left;
+    }
+
+    article.hyhyhy-parent.slides div.last {
+        color: #fff;
+        padding: 1em;
+        margin: .5em 0;
+    }
+</style>
+
+<div class="separator"></div>
 
 <pre><code class="language-markup"># Hi!
 
@@ -257,9 +274,6 @@ id: black hole
 
 END
 </code></pre>
-        </section>
-        <section >
-            <p><b>after<b></b></b></p>
 
 <pre><code class="language-markup">&lt;article&gt;
     &lt;section&gt;
@@ -274,8 +288,128 @@ END
 &lt;/article&gt;
 </code></pre>
         </section>
+        <section data-hyhyhy-state='slides'>
+            <div class="separator"></div>
+<div class="background"></div>
+
+<pre><code class="language-markup">&lt;ul&gt;
+    &lt;li&gt;AAA&lt;/li&gt;
+    &lt;li&gt;BBB&lt;/li&gt;
+    &lt;li&gt;CCC&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;AAA&lt;/li&gt;
+    &lt;li&gt;BBB&lt;/li&gt;
+    &lt;li&gt;CCC&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+<div class="last" style="color: #000">
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+    </ul>
+
+    <ol>
+        <li>AAA</li>
+        <li>BBB</li>
+        <li>CCC</li>
+    </ol>
+</div>
+        </section>
+        <section data-hyhyhy-state='slides'>
+            <div class="separator"></div>
+<div class="background"></div>
+
+<pre><code class="language-markup">some some some some
+
+&lt;div class="bullet"&gt;hyhyhy&lt;/div&gt;
+&lt;div class="bullet"&gt;hehehe&lt;/div&gt;
+&lt;span class="bullet"&gt;hihihi&lt;/span&gt;
+
+&lt;br&gt;
+
+some some some some
+</code></pre>
+
+<div class="last" style="color: #000">
+    some some some some
+
+    <div class="bullet">hyhyhy</div>
+    <div class="bullet">hehehe</div>
+    <span class="bullet">hihihi</span>
+
+    <br />
+
+    some some some some
+</div>
+        </section>
+        <section data-hyhyhy-state='slides'>
+            <div class="separator"></div>
+<div class="background"></div>
+
+<pre><code class="language-markup">  ```javascript
+  console.log('whoaa');
+
+  // nice line
+  ```
+
+&lt;div
+    class="equation"
+    data-expr="f(x) = x^{2 \pi}"
+&gt;&lt;/div&gt;
+</code></pre>
+
+<div class="last" style="top: 50%; z-index: 1; color: #000">
+    <div class="equation" data-expr="f(x) = x^{2 \pi}"></div>
+</div>
+
+<pre><code class="language-javascript">console.log('whoaa');
+
+// nice line
+</code></pre>
+        </section>
+        <section data-hyhyhy-state='slides'>
+            <div class="separator"></div>
+<div class="background"></div>
+
+<pre><code class="language-markup">&lt;div class="result"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    data_graphic({
+        description: "UFO",
+        ...
+        target: ".result",
+        x_accessor: "year",
+        y_accessor: "sightings"
+    });
+&lt;/script&gt;
+</code></pre>
+
+<div class="last">
+    <div class="result-graphic"></div>
+
+    <textarea class="data-graphic" style="display: none;">[{"year":"1945","sightings":6},{"year":"1946","sightings":8},{"year":"1947","sightings":34}]</textarea>
+
+    <script type="text/javascript">
+        data_graphic({
+            description: "Yearly UFO sightings from 1945 to 2010.",
+            data: JSON.parse($('textarea.data-graphic').val()),
+            markers: [{'year': 1946, 'label': '"The Creeping Terror" released'}],
+            width: 350,
+            height: 250,
+            target: ".result-graphic",
+            x_accessor: "year",
+            y_accessor: "sightings",
+            interpolate: "monotone"
+        });
+    </script>
+</div>
+        </section>
         <section >
-            <h1 id="keyboard">Keyboard</h1>
+            <h1 id="bkeyboardb"><b>Keyboard</b></h1>
 
 <ol>
     <li>Press <b>left arrow</b> and <b>right arrow</b> to navigate.</li>
@@ -286,7 +420,18 @@ END
 </ol>
         </section>
         <section >
-            <h1 id="so">So…</h1>
+            <h1 id="bsupported-browsersb"><b>Supported browsers</b></h1>
+
+<ul>
+    <li>Firefox 2+</li>
+    <li>Safari 3+</li>
+    <li>Opera 9.64+</li>
+    <li>Chrome</li>
+    <li>IE9, IE10, IE11</li>
+</ul>
+        </section>
+        <section >
+            <h1 id="bsob"><b>So…</b></h1>
 
 <p>Ready to <a href="https://github.com/MaciejCzyzewski/hyhyhy">contribute</a>?</p>
         </section>
