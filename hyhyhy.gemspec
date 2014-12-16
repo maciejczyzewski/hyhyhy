@@ -18,12 +18,14 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "commander", "~> 4.1", ">= 4.1.0"
-  spec.add_runtime_dependency "kramdown", "~> 1.5", ">= 1.5.0"
-  spec.add_runtime_dependency "launchy", "~> 2.4", ">= 2.4.3"
-  spec.add_runtime_dependency "listen", "~> 2.8", ">= 2.8.0"
-  spec.add_runtime_dependency "erubis", "~> 2.7", ">= 2.7.0"
+  spec.add_runtime_dependency "commander", "~> 4.0", ">= 4.0.0"
+  spec.add_runtime_dependency "kramdown", "~> 1.4", ">= 1.4.0"
+  spec.add_runtime_dependency "launchy", "~> 2.3", ">= 2.3.0"
+  spec.add_runtime_dependency "listen", "~> 2.7", ">= 2.7.0"
+  spec.add_runtime_dependency "erubis", "~> 2.6", ">= 2.6.0"
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+
+  spec.required_ruby_version = '>= 1.9.3'
 end
