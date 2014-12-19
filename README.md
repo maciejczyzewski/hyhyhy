@@ -188,10 +188,10 @@ See LICENSE file in this repository.
 
 <div align="center">
   <img src="http://bower.io/img/bower-logo.png" width="200px" />
-  <img src="http://metricsgraphicsjs.org/images/logo.svg" width="200px" />
-  <img src="https://khan.github.io/KaTeX/katex-logo.svg" width="200px" />
-  <img src="http://upload.wikimedia.org/wikipedia/commons/4/4b/O_Reilly_Media_logo.svg" width="200px" />
   <img src="http://www.stockholmruby.com/logo.png" width="200px" />
+  <img src="https://khan.github.io/KaTeX/katex-logo.svg" width="300px" />
+  <img src="http://upload.wikimedia.org/wikipedia/commons/4/4b/O_Reilly_Media_logo.svg" width="200px" />
+  <img src="http://metricsgraphicsjs.org/images/logo.svg" width="300px" />
   <img src="http://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_Google_2013_Official.svg" width="200px" />
 </div>
 
