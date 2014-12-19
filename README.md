@@ -118,7 +118,7 @@ NOT READY, YET! SEE MAIN PRESENTATION...
 
 ## Configuration
 
-For now, you can change the basic variables in the configuration file.
+For now, you can change the basic variables in the `.hyhyhy` configuration file.
 
 ```json
 {
@@ -138,7 +138,7 @@ For now, you can change the basic variables in the configuration file.
 
 ## Dependencies
 
-- Ruby (>= 2.0.0)
+- Ruby (>= 1.9.3)
     * commander
     * kramdown
     * launchy
@@ -150,6 +150,8 @@ For now, you can change the basic variables in the configuration file.
     * prism.js
     * MetricsGraphics.js
     * katex.js
+- Others 
+    * bower (optional)
 
 ## Quickstart
 
