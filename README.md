@@ -175,6 +175,8 @@ Sample presentation is already in the project. But if you want you can see it li
 ## Conceptions
 
 - [ ] speaker notes
+- [ ] travis tests
+- [ ] compression
 
 ## Contributing
 
