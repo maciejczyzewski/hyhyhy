@@ -1,4 +1,4 @@
 language: ruby
 ruby:
-  - "2.1.4"
-script: gem build hyhyhy.gemspec && gem install ./hyhyhy-0.0.1.gem && hyhyhy
+  - "2.1.0"
+script: gem build hyhyhy.gemspec
