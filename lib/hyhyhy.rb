@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'listen'
 require 'erubis'
 require 'launchy'
