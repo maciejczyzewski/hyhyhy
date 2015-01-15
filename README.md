@@ -23,14 +23,15 @@ All presentations are very well supported across browsers and the library also i
 #### More reading:
 
 - [Installation](#installation): Step-by-step instructions for getting hyhyhy running on your computer.
-- [Commands](#commands): List of commands.
+- [Commands](#commands): List of Ruby CLI commands.
 - [Usage](#usage): Instructions stating how to use the framework.
 - [Configuration](#configuration): Explanation of configure the tool.
 - [Presentation](#presentation): Explanation of use the generated project.
-- [Dependencies](#dependencies): List of used dependencies.
+- [Dependencies](#dependencies): List of used dependencies in the project.
 - [Quickstart](#quickstart): Step-by-step instructions for creating new project.
-- [Example](#example): Preview in action.
+- [Example](#example): Sample available immediately after installation.
 - [Supported browsers](#supported-browsers): Explanation of browser support and fallbacks.
+- [Conceptions](#conceptions): List of ideas for the future.
 - [Contributing](#contributing): Explanation of how you can join the project.
 - [License](#license): Clarification of certain rules.
 
@@ -173,7 +174,7 @@ $ hyhyhy build --watch --serve
 
 ## Example
 
-Sample presentation is already in the project. But if you want you can see it live [by clicking this link.](http://maciejczyzewski.me/hyhyhy)
+Sample available immediately after installation. You can see it live [by clicking this link.](http://maciejczyzewski.me/hyhyhy)
 
 ## Supported browsers
 
@@ -190,6 +191,8 @@ Sample presentation is already in the project. But if you want you can see it li
 - [ ] compression
 
 ## Contributing
+
+The goal was to make package that will speed up work on own presentation.
 
 Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
 
