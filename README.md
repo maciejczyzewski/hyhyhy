@@ -23,16 +23,16 @@ All presentations are very well supported across browsers and the library also i
 #### More reading:
 
 - [Installation](#installation): Step-by-step instructions for getting hyhyhy running on your computer.
+- [Quickstart](#quickstart): Step-by-step instructions for creating new project.
 - [Commands](#commands): List of Ruby CLI commands.
 - [Usage](#usage): Instructions stating how to use the framework.
 - [Configuration](#configuration): Explanation of configure the tool.
-- [Presentation](#presentation): Explanation of use the generated project.
 - [Dependencies](#dependencies): List of used dependencies in the project.
-- [Quickstart](#quickstart): Step-by-step instructions for creating new project.
-- [Example](#example): Sample available immediately after installation.
 - [Supported browsers](#supported-browsers): Explanation of browser support and fallbacks.
-- [Conceptions](#conceptions): List of ideas for the future.
+- [Presentation](#presentation): Explanation of use the generated project.
+- [Example](#example): Sample available immediately after installation.
 - [Contributing](#contributing): Explanation of how you can join the project.
+- [Conceptions](#conceptions): List of ideas for the future.
 - [License](#license): Clarification of certain rules.
 
 ## Installation
@@ -64,6 +64,15 @@ my-new-presentation
 ├── .bowerrc               # Bower configure
 ├── .hyhyhy                # Hyhyhy configure
 └── README.md              # Simplified guide
+```
+
+## Quickstart
+
+```bash
+$ gem install hyhyhy
+$ hyhyhy new
+$ cd new_empty_presentation
+$ hyhyhy build --watch --serve
 ```
 
 ## Commands
@@ -137,15 +146,6 @@ For now, you can change the basic variables in the `.hyhyhy` configuration file.
 }
 ```
 
-## Presentation
-
-- Press (`left arrow` or `k`) and (`right arrow` or `j`) to navigate.
-- Press `h` to launch fullscreen.
-- Press `ESC` to exit fullscreen mode.
-- Press `gg`/`shift + g` to move to top/bottom.
-- Browser zooming is supported.
-- Touch events are supported.
-
 ## Dependencies
 
 - Ruby (>= 1.9.3)
@@ -163,19 +163,6 @@ For now, you can change the basic variables in the `.hyhyhy` configuration file.
 - Others
     * bower (optional)
 
-## Quickstart
-
-```bash
-$ gem install hyhyhy
-$ hyhyhy new
-$ cd new_empty_presentation
-$ hyhyhy build --watch --serve
-```
-
-## Example
-
-Sample available immediately after installation. You can see it live [by clicking this link.](http://maciejczyzewski.me/hyhyhy)
-
 ## Supported browsers
 
 - Firefox 2+
@@ -184,17 +171,28 @@ Sample available immediately after installation. You can see it live [by clickin
 - Chrome
 - IE9, IE10, IE11
 
+## Presentation
+
+- Press (`left arrow` or `k`) and (`right arrow` or `j`) to navigate.
+- Press `h` to launch fullscreen.
+- Press `ESC` to exit fullscreen mode.
+- Press `gg`/`shift + g` to move to top/bottom.
+- Browser zooming is supported.
+- Touch events are supported.
+
+## Example
+
+Sample available immediately after installation. You can see it live [by clicking this link.](http://maciejczyzewski.me/hyhyhy)
+
+## Contributing
+
+The goal was to make package that will speed up work on own presentation.Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
+
 ## Conceptions
 
 - [ ] speaker notes
 - [ ] travis tests
 - [ ] compression
-
-## Contributing
-
-The goal was to make package that will speed up work on own presentation.
-
-Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
 
 ## License
 
