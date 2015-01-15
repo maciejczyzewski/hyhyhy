@@ -4,6 +4,9 @@ require 'launchy'
 require 'webrick'
 require 'kramdown'
 
+Encoding.default_internal = Encoding::UTF_8
+Encoding.default_external = Encoding::UTF_8
+
 module Hyhyhy
   autoload :Version, "hyhyhy/version"
 
