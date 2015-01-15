@@ -130,9 +130,10 @@ For now, you can change the basic variables in the `.hyhyhy` configuration file.
 
 ## Presentation
 
-- Press `left arrow` and `right arrow` to navigate.
+- Press (`left arrow` or `k`) and (`right arrow` or `j`) to navigate.
 - Press `h` to launch fullscreen.
 - Press `ESC` to exit fullscreen mode.
+- Press `gg`/`shift + g` to move to top/bottom.
 - Browser zooming is supported.
 - Touch events are supported.
 
@@ -150,7 +151,7 @@ For now, you can change the basic variables in the `.hyhyhy` configuration file.
     * prism.js
     * MetricsGraphics.js
     * katex.js
-- Others 
+- Others
     * bower (optional)
 
 ## Quickstart
@@ -202,3 +203,4 @@ See LICENSE file in this repository.
 ## Thanks
 
 * Kim Thoenen ([@Chive](https://github.com/Chive))
+* Anderson de Oliveira ([@andersonba](https://github.com/andersonba))
