@@ -215,3 +215,4 @@ See LICENSE file in this repository.
 
 * Kim Thoenen ([@Chive](https://github.com/Chive))
 * Anderson de Oliveira ([@andersonba](https://github.com/andersonba))
+* Jorge Epuñan ([@juanbrujo](https://github.com/juanbrujo))
