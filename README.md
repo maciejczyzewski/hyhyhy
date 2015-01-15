@@ -4,13 +4,21 @@
 
 # hyhyhy [![Gem Version](https://badge.fury.io/rb/hyhyhy.svg)](http://badge.fury.io/rb/hyhyhy)
 
-Pure & Professional presentations
+> _A Ruby library for creating and outputting professional, business-looking (HTML5) presentations that can be viewed inside the browser!_
 
 ## Introduction
 
-It's a tool for creating nice looking HTML5 presentations.
+__hyhyhy__ is used from the _Ruby CLI_ and relies on a series of steps that developers (and even regular users) can go through to build a simple presentation.
 
-Comes with a broad range of features: __Markdown, Nested slides, Math typesetting, Compatibility, Syntax highlighter, Javascript API, Convenient skeleton...__
+Once these steps completed, an HTML5 file is generated which can be accessed, viewed, and hosted online.
+
+## Features
+
+All hyhyhy presentations come with support for a wide range of features, like __Markdown text formatting__, __page transitions__, __sequential transitions__ for objects on the page, __syntax highlighting__, and __mathematical functions__.
+
+There’s also support for __keyboard shortcuts__, showing the position inside the overall __presentation timeline__, __hashed URLs__ for easy deep-linking, __automatic rebuilds__ on content changes, __responsive layouts__, and __touch gestures__ on mobile devices.
+
+All presentations are very well supported across browsers and the library also includes lots of documentation.
 
 #### More reading:
 
