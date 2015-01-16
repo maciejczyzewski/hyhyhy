@@ -173,7 +173,7 @@ For now, you can change the basic variables in the `.hyhyhy` configuration file.
 
 ## Presentation
 
-- Press (`left arrow` or `k`) and (`right arrow` or `j`) to navigate.
+- Press (`space` or `shift + space`), (`left arrow` or `right arrow`) and (`k` or `j`) to navigate.
 - Press `h` to launch fullscreen.
 - Press `ESC` to exit fullscreen mode.
 - Press `gg`/`shift + g` to move to top/bottom.
