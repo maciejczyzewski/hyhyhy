@@ -66,6 +66,12 @@ def bash *args
   abort "Failed during: #{args.shell_s}" unless Kernel.system(*args)
 end
 
+# Function: run commands with permissions
+def sudo *args
+  ohai "/usr/bin/sudo", *args
+  bash "/usr/bin/sudo", *args
+end
+
 # Function: asks the question
 def ready?
   while true
@@ -140,7 +146,7 @@ ohai "Downloading and installing hyhyhy..."
 
 # Create main directory
 Dir.chdir HYHYHY_PREFIX do
-  bash 'mkdir', '-p', 'lib/hyhyhy'
+  sudo "/bin/mkdir", '-p', 'lib/hyhyhy'
 end
 
 # Download files from repository
@@ -169,11 +175,11 @@ end
 
 # Copy executable script
 Dir.chdir HYHYHY_PREFIX do
-  bash "cp", "-p", "lib/hyhyhy/bin/hyhyhy", "bin/hyhyhy"
+  sudo "/bin/cp", "-p", "lib/hyhyhy/bin/hyhyhy", "bin/hyhyhy"
 
   # Repair problems with permissions
-  bash "chmod", "u+rwx", "bin/hyhyhy"
-  bash "chmod", "u+rwx", "lib/hyhyhy/src/hyhyhy.rb"
+  sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
+  sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/hyhyhy.rb"
 end
 
 # Ooopppss?!

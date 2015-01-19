@@ -4,7 +4,7 @@ os:
   - osx
 
 # Testing
-script: "./tests"
+script: "sudo ./tests"
 
 # IRC notification
 notifications:
