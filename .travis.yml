@@ -1,0 +1,6 @@
+os:
+  - osx
+  - linux
+
+script: "./install travis"
+after_script: "hyhyhy"
