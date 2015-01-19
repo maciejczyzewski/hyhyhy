@@ -1,4 +1,0 @@
-language: ruby
-ruby:
-  - "2.1.0"
-script: gem build hyhyhy.gemspec
