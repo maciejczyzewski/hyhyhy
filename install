@@ -72,7 +72,7 @@ def ready?
     print "Are you ready for that? [Y/n]: "
     case gets.strip
       when 'Y', 'y', 'j', 'J', 'yes'
-        return True
+        break
       when /\A[nN]o?\Z/ #n or no
         abort
     end
@@ -168,7 +168,10 @@ end
 # Copy executable script
 Dir.chdir HYHYHY_PREFIX do
   bash "cp", "-p", "lib/hyhyhy/bin/hyhyhy", "bin/hyhyhy"
+
+  # Repair problems with permissions
   bash "chmod", "u+rwx", "bin/hyhyhy"
+  bash "chmod", "u+rwx", "lib/hyhyhy/src/hyhyhy.rb"
 end
 
 # Ooopppss?!
