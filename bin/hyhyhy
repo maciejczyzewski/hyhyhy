@@ -1,0 +1,29 @@
+#!/bin/sh
+
+chdir () {
+  cd "$@" >/dev/null
+}
+
+HYHYHY_FILE_DIRECTORY=$(chdir "${0%/*}" && pwd -P)
+export PROJECT_HYHYHY_FILE="$HYHYHY_FILE_DIRECTORY/${0##*/}"
+
+HYHYHY_SYMLINK=$(readlink "$0")
+if [ -n "$HYHYHY_SYMLINK" ]
+then
+    HYHYHY_SYMLINK_DIRECTORY=$(dirname "$HYHYHY_SYMLINK")
+    HYHYHY_FILE_DIRECTORY=$(chdir "$HYHYHY_FILE_DIRECTORY" &&
+                          chdir "$HYHYHY_SYMLINK_DIRECTORY" && pwd -P)
+fi
+
+HYHYHY_LIBRARY_DIRECTORY=$(chdir "$HYHYHY_FILE_DIRECTORY"/../lib && pwd -P)
+
+unset GEM_HOME
+unset GEM_PATH
+
+HYHYHY_SYSTEM=$(uname -s | tr "[:upper:]" "[:lower:]")
+if [ "$HYHYHY_SYSTEM" = "darwin" ]
+then
+    exec "$HYHYHY_LIBRARY_DIRECTORY/src/hyhyhy.rb" "$@"
+else
+    exec ruby -W0 "$HYHYHY_LIBRARY_DIRECTORY/src/hyhyhy.rb" "$@"
+fi
