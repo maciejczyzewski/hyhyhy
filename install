@@ -66,6 +66,19 @@ def bash *args
   abort "Failed during: #{args.shell_s}" unless Kernel.system(*args)
 end
 
+# Function: asks the question
+def ready?
+  while true
+    print "Are you ready for that? [Y/n]: "
+    case gets.strip
+      when 'Y', 'y', 'j', 'J', 'yes'
+        return True
+      when /\A[nN]o?\Z/ #n or no
+        abort
+    end
+  end
+end
+
 # Function: checks that you can download
 def git
   @git ||= if ENV['GIT'] and File.executable? ENV['GIT']
@@ -100,12 +113,25 @@ Dir.chdir "/usr"
 # Check if current platform is Linux
 abort "It was not yet tested on Linux! Sorry." if /linux/i === RUBY_PLATFORM
 
+# Show ASCII
+puts " _           _           _
+| |         | |         | |
+| |__  _   _| |__  _   _| |__  _   _
+| '_ \\| | | | '_ \\| | | | '_ \\| | | |
+| | | | |_| | | | | |_| | | | | |_| |
+|_| |_|\\__, |_| |_|\\__, |_| |_|\\__, |
+        __/ |       __/ |       __/ |
+       |___/       |___/       |___/ "
+
 # Anticipates
 ohai "This script will install:"
 
 # Structure
 puts "#{HYHYHY_PREFIX}/bin/hyhyhy"       # executable
 puts "#{HYHYHY_PREFIX}/lib/hyhyhy/..."   # files & cache
+
+# Ask
+ready?
 
 # Here comes the party
 ohai "Downloading and installing hyhyhy..."
