@@ -104,8 +104,8 @@ abort "It was not yet tested on Linux! Sorry." if /linux/i === RUBY_PLATFORM
 ohai "This script will install:"
 
 # Structure
-puts "#{HYHYHY_PREFIX}/bin/hyhyhy"   # executable
-puts "#{HYHYHY_PREFIX}/lib/hyhyhy"   # files & cache
+puts "#{HYHYHY_PREFIX}/bin/hyhyhy"       # executable
+puts "#{HYHYHY_PREFIX}/lib/hyhyhy/..."   # files & cache
 
 # Here comes the party
 ohai "Downloading and installing hyhyhy..."
