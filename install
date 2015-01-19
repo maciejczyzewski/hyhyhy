@@ -141,7 +141,7 @@ end
 
 # Copy executable script
 Dir.chdir HYHYHY_PREFIX do
-  bash "cp", "lib/hyhyhy/bin/hyhyhy", "bin/hyhyhy", "-p"
+  bash "cp", "-p", "lib/hyhyhy/bin/hyhyhy", "bin/hyhyhy"
   bash "chmod", "u+rwx", "bin/hyhyhy"
 end
 
