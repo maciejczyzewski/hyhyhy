@@ -4,7 +4,7 @@
 #                                       _           _           _             #
 #  Project                             | |         | |         | |            #
 #                                      | |__  _   _| |__  _   _| |__  _   _   #
-#  Copyright (C) 1996 - 2015,          | '_ \| | | | '_ \| | | | '_ \| | | |  #
+#  Copyright (C) 2005 - 2015,          | '_ \| | | | '_ \| | | | '_ \| | | |  #
 #  Maciej A. Czyzewski,                | | | | |_| | | | | |_| | | | | |_| |  #
 #  <maciejanthonyczyzewski@gmail.com>  |_| |_|\__, |_| |_|\__, |_| |_|\__, |  #
 #                                              __/ |       __/ |       __/ |  #
@@ -131,7 +131,9 @@ puts "#{HYHYHY_PREFIX}/bin/hyhyhy"       # executable
 puts "#{HYHYHY_PREFIX}/lib/hyhyhy/..."   # files & cache
 
 # Ask
-ready?
+if ARGV.first != 'travis'
+  ready?
+end
 
 # Here comes the party
 ohai "Downloading and installing hyhyhy..."
