@@ -111,7 +111,7 @@ at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 Dir.chdir "/usr"
 
 # Check if current platform is Linux
-abort "It was not yet tested on Linux! Sorry." if /linux/i === RUBY_PLATFORM
+# abort "It was not yet tested on Linux! Sorry." if /linux/i === RUBY_PLATFORM
 
 # Show ASCII
 puts " _           _           _

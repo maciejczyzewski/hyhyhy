@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./install travis # Installation
+hyhyhy           # Tests

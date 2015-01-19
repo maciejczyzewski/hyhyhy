@@ -1,6 +1,11 @@
+# Multiple Operating Systems
 os:
+  - linux
   - osx
-# - linux not now
 
-script: "./install travis"
-after_script: "hyhyhy"
+# Testing
+script: "./tests"
+
+# IRC notification
+notifications:
+  irc: "chat.freenode.net#hyhyhy"
