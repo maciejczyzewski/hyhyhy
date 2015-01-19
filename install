@@ -139,6 +139,12 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
   end
 end
 
+# Copy executable script
+Dir.chdir HYHYHY_PREFIX do
+  bash "cp", "lib/hyhyhy/bin/hyhyhy", "bin/hyhyhy", "-p"
+  bash "chmod", "u+rwx", "bin/hyhyhy"
+end
+
 # Ooopppss?!
 warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless ENV['PATH'].split(':').include? "#{HYHYHY_PREFIX}/bin"
 
