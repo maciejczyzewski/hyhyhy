@@ -137,7 +137,7 @@ puts ""
 ohai "This script will install:"
 
 # Structure
-puts "#{HYHYHY_PREFIX}/bin/hyhyhy"       # executable
+puts "#{HYHYHY_PREFIX}/bin/hyhyhy"       # executable (initiator)
 puts "#{HYHYHY_PREFIX}/lib/hyhyhy/..."   # files & cache
 
 # Ask
@@ -192,7 +192,7 @@ Dir.chdir HYHYHY_PREFIX do
 
   # Repair problems with permissions
   sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
-  sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/hyhyhy.rb"
+  sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/cli.rb"
 end
 
 # Ooopppss?!
