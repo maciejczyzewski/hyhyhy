@@ -121,9 +121,6 @@ at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 # guess is fair enough. Also sudo prints a warning message for no good reason
 Dir.chdir "/usr"
 
-# Check if current platform is Linux
-# abort "It was not yet tested on Linux! Sorry." if /linux/i === RUBY_PLATFORM
-
 # Show ASCII
 puts " _           _           _
 | |         | |         | |
@@ -164,15 +161,18 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
 
     # "git remote add" will fail if the remote is defined in the global config
     bash git, "config", "remote.origin.url", HYHYHY_REPO
-    bash git, "config", "remote.origin.fetch", "+refs/heads/*:refs/remotes/origin/*"
+    bash git, "config", "remote.origin.fetch",
+              "+refs/heads/*:refs/remotes/origin/*"
 
-    args = git, "fetch", "origin", "#{HYHYHY_BRANCH}:refs/remotes/origin/#{HYHYHY_BRANCH}", "-n"
+    args = git, "fetch", "origin",
+           "#{HYHYHY_BRANCH}:refs/remotes/origin/#{HYHYHY_BRANCH}", "-n"
     args << "--depth=1" if ARGV.include? "--fast"
     bash(*args)
 
     bash git, "reset", "--hard", "origin/#{HYHYHY_BRANCH}"
   else
-    warn "#{Color.white}git#{Color.reset} is not installed! Do not worry, trying with #{Color.white}curl#{Color.reset}..."
+    warn "#{Color.white}git#{Color.reset} is not installed! "
+         + "Do not worry, trying with #{Color.white}curl#{Color.reset}..."
 
     # Pipefail to cause the exit status from curl to propogate if it fails...
     # We use -k for curl because Leopard has a bunch of bad SSL certificates
@@ -180,7 +180,9 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
     curl_flags << "k" if darwin_version <= "10.5"
 
     # Continue using Curl
-    bash "/bin/bash -o pipefail -c '/usr/bin/curl -#{curl_flags} #{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | /usr/bin/tar xz -m --strip 1'"
+    bash "/bin/bash -o pipefail -c '/usr/bin/curl -#{curl_flags} "
+         + "#{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | "
+         + "/usr/bin/tar xz -m --strip 1'"
   end
 end
 
