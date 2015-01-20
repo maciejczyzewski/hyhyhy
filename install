@@ -196,7 +196,8 @@ Dir.chdir HYHYHY_PREFIX do
 end
 
 # Ooopppss?!
-warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless ENV['PATH'].split(':').include? "#{HYHYHY_PREFIX}/bin"
+warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless
+     ENV['PATH'].split(':').include? "#{HYHYHY_PREFIX}/bin"
 
 # Good news
 ohai "Installation successful!"
