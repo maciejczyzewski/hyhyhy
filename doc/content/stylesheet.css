@@ -1,0 +1,77 @@
+/* General */
+*             { margin: 0; padding: 0; }
+body          { background: #fff; color: #000;
+                font-family: Georgia, Palatino, serif; font-size: 17px; }
+
+/* Links */
+a             { color: #004B6B; }
+a:hover       { color: #6D4100; }
+
+/* Navigation */
+nav           { text-align: center; margin-bottom: 30px; }
+nav a         { font-style: italic; }
+
+/* Typography */
+p             { line-height: 1.4; }
+ul            { margin: 15px 0 15px 0; padding: 0; list-style: none;
+                line-height: 1.4; }
+ul li:before  { content: "\00BB \0020"; color: #888; position: absolute;
+                margin-left: -19px; }
+ol            { line-height: 1.4; margin: 15px 0 15px 30px; padding: 0; }
+blockquote    { margin: 0; font-style: italic; color: #444; }
+
+/* Titles */
+h2            { font-size: 30px; margin: 15px 0 5px 0; }
+h3            { font-size: 24px; margin: 15px 0 5px 0; }
+h4            { font-size: 19px; margin: 15px 0 5px 0; }
+
+/* Header */
+header        { display: block; margin-bottom: 60px; height: 68px; }
+header h1     { width: 410px; font-size: 80px; float: left; line-height: 68px;
+                font-weight: bold; font-family: cursive; }
+header div    { width: 130px; float: left; height: 68px; }
+header a,
+header iframe { width: 170px !important; }
+
+/* Boxes */
+aside         { width: 540px; margin: 40px auto; }
+
+/* --------------------------------- TRASH --------------------------------- */
+
+#sidebar {
+  position: absolute;
+
+  top: 40px;
+  left: 20px;
+  width: 200px;
+
+  padding: 20px 20px 0 0;
+
+  border-right: 1px solid #ccc;
+
+  text-align: right;
+}
+
+#sidebar h2 {
+  text-transform: uppercase;
+
+  font-size: 13px;
+
+  color: #333;
+
+  letter-spacing: 1px;
+
+  line-height: 20px;
+}
+
+#sidebar ul {
+  list-style-type: none;
+
+  margin: 20px 0;
+}
+
+#sidebar li {
+  font-size: 14px;
+
+  line-height: 20px;
+}

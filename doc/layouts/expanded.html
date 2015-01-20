@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>A Brand New nanoc Site - <%= @item[:title] %></title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <body>
+    <div id="main">
+      <%= yield %>
+    </div>
+    <div id="sidebar">
+      <h2>Useful Links</h2>
+      <ul>
+        <li><a href="http://maciejczyzewski.me/hyhyhy">Homepage</a></li>
+        <li><a href="http://maciejczyzewski.me/hyhyhy/docs.html">Documentation</a></li>
+      </ul>
+      <h2>Community</h2>
+      <ul>
+        <li><a href="https://github.com/maciejczyzewski/hyhyhy">hyhyhy @ github</a></li>
+        <li><a href="https://github.com/maciejczyzewski/hyhyhy/issues">Issue Tracker</a></li>
+        <li><a href="irc://chat.freenode.net/#hyhyhy">IRC Channel</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

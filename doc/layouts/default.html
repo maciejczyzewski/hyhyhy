@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>A Brand New nanoc Site - <%= @item[:title] %></title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <body>
+    <aside>
+      <header>
+        <h1>hyhyhy</h1>
+        <div>
+          <!-- Follow @_czyzewski -->
+          <iframe src="https://ghbtns.com/github-btn.html?user=maciejczyzewski&repo=hyhyhy&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+
+          <!-- Twitter -->
+          <a href="https://twitter.com/_czyzewski" class="twitter-follow-button" data-show-count="false">Follow @_czyzewski</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+          <!-- Github -->
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://maciejczyzewski.me/hyhyhy" data-via="_czyzewski">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+      </header>
+
+      <nav>
+        <a href="/">overview</a> //
+        <a href="/docs/">docs</a> //
+        <a href="/community/">community</a> //
+        <a href="/snippets/">snippets</a> //
+        <a href="/extensions/">extensions</a>
+      </nav>
+
+      <%= yield %>
+    </aside>
+  </body>
+</html>
