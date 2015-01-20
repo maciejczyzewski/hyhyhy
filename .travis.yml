@@ -8,8 +8,13 @@ script: "sudo ./tests"
 
 # IRC notification
 notifications:
-  irc: "chat.freenode.net#hyhyhy"
-  on_success: change
-  on_failure: change
-  template:
-    - "%{message} by @%{author}: See %{build_url}"
+  irc:
+    on_success: change
+    on_failure: change
+    channels:
+      - irc.freenode.org#hyhyhy
+    template:
+      - "%{message} by @%{author}: See %{build_url}"
+  email:
+    on_success: never
+    on_failure: never
