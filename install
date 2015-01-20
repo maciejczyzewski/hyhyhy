@@ -89,7 +89,7 @@ end
 def git
   @git ||= if ENV['GIT'] and File.executable? ENV['GIT']
     ENV['GIT']
-  elsif Kernel.system '/usr/bin/which -s git'
+  elsif Kernel.system '/usr/bin/which git'
     'git'
   else
     exe = `xcrun -find git 2>/dev/null`.chomp
@@ -103,6 +103,11 @@ def git
   return if $1.nil? or $1.extend(Version) < "1.7.10"
 
   @git
+end
+
+# Function: return OS X version
+def darwin_version
+  @darwin_version ||= `/usr/bin/sw_vers -productVersion`.chomp[/10\.\d+/].extend(Version)
 end
 
 # =============================================================================
@@ -168,22 +173,9 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
     # Pipefail to cause the exit status from curl to propogate if it fails...
     # We use -k for curl because Leopard has a bunch of bad SSL certificates
     curl_flags = "fsSL"
+    curl_flags << "k" if darwin_version <= "10.5"
 
-    # Check if current platform is OS X (darwin)
-    if /darwin/i === RUBY_PLATFORM
-      # Function: return OS X version
-      def darwin_version
-        @darwin_version ||= `/usr/bin/sw_vers -productVersion`.chomp[/10\.\d+/].extend(Version)
-      end
-      curl_flags << "k" if darwin_version <= "10.5"
-    end
-
-    # Check if current platform is Linux
-    if /linux/i === RUBY_PLATFORM
-      sudo "apt-get", "install", "curl"
-    end
-
-    # Continue using curl
+    # Continue using Curl
     bash "/bin/bash -o pipefail -c '/usr/bin/curl -#{curl_flags} #{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | /usr/bin/tar xz -m --strip 1'"
   end
 end
