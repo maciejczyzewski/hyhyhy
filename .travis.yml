@@ -9,3 +9,7 @@ script: "sudo ./tests"
 # IRC notification
 notifications:
   irc: "chat.freenode.net#hyhyhy"
+  on_success: change
+  on_failure: change
+  template:
+    - "%{message} by @%{author}: See %{build_url}"
