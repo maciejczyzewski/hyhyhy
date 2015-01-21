@@ -1,4 +1,5 @@
 #!/bin/sh
 
-./install travis # Installation
-hyhyhy           # Tests
+./install travis          # Installation
+hyhyhy                    # Tests
+(cd doc && nanoc compile) # Documentation
