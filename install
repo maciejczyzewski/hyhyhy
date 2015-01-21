@@ -194,6 +194,8 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
 
       if /linux/i === RUBY_PLATFORM
         sudo "apt-get", "install", "curl"
+      else
+        abort "...however no, you have to do it yourself!"
       end
     end
 
@@ -227,7 +229,10 @@ if gem == nil
        "Do not worry, repairing that..."
 
   if /linux/i === RUBY_PLATFORM
+    sudo "apt-get", "update", "ruby"
     sudo "apt-get", "install", "rubygems"
+  else
+    abort "...however no, you have to do it yourself!"
   end
 end
 
