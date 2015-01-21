@@ -195,6 +195,10 @@ Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/cli.rb"
 end
 
+# All needed packages
+sudo "gem", "install", "nanoc"
+sudo "gem", "install", "kramdown"
+
 # Ooopppss?!
 warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless
      ENV['PATH'].split(':').include? "#{HYHYHY_PREFIX}/bin"
