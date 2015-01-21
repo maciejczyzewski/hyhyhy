@@ -1,10 +1,16 @@
 ---
-title: hyhyhy
+title: index
 ---
 
 <summary>A tool for creating and outputting professional, business-looking HTML5 presentations that can be viewed inside the browser!</summary>
 
 <img src="browsers.jpeg" width="540px" alt="Browsers! Hyhyhy! Happy!" />
+
+## Installation
+
+Paste that at a Terminal prompt.
+
+<pre><code class="language-ruby">ruby -e "$(curl -fsSL http://git.io/SDUT_w)"</code></pre>
 
 ## Introduction
 
@@ -23,5 +29,4 @@ All presentations are very well supported across browsers and the library also i
 <a href="https://github.com/maciejczyzewski/hyhyhy" class="righttext" target="_blank">source code</a>
 
 [![GitHub version](https://badge.fury.io/gh/maciejczyzewski%2Fhyhyhy.svg)](http://badge.fury.io/gh/maciejczyzewski%2Fhyhyhy)
-[![Build Status](https://travis-ci.org/maciejczyzewski/hyhyhy.
-svg?branch=feature)](https://travis-ci.org/maciejczyzewski/hyhyhy)
+[![Build Status](https://travis-ci.org/maciejczyzewski/hyhyhy.svg?branch=feature)](https://travis-ci.org/maciejczyzewski/hyhyhy)
