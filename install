@@ -244,8 +244,9 @@ if gem == nil
        "Do not worry, repairing that..."
 
   if /linux/i === RUBY_PLATFORM
-    sudo "apt-get", "-y", "upgrade", "ruby", "--fix-missing"
-    sudo "apt-get", "-y", "install", "rubygems", "--fix-missing"
+    bash "export", "DEBIAN_FRONTEND=noninteractive"
+    sudo "apt-get", "-o", "Dpkg::Options::=\"--force-confnew\"", "-y", "upgrade", "ruby", "--fix-missing"
+    sudo "apt-get", "-o", "Dpkg::Options::=\"--force-confnew\"", "-y", "install", "rubygems", "--fix-missing"
   else
     abort "...however no, you have to do it yourself!"
   end
