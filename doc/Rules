@@ -16,6 +16,8 @@
 compile '*' do
   if item[:extension] == 'md'
     filter :kramdown
+    filter :colorize_syntax
+
     layout 'default'
 
     if item[:layout] == 'expanded'

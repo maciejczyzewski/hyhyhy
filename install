@@ -196,8 +196,11 @@ Dir.chdir HYHYHY_PREFIX do
 end
 
 # All needed packages
+ohai "Installing third-party libraries..."
+
 sudo "gem", "install", "nanoc"
 sudo "gem", "install", "kramdown"
+sudo "gem", "install", "coderay"
 
 # Ooopppss?!
 warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless
