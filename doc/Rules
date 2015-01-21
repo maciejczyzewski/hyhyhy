@@ -17,19 +17,20 @@ compile '*' do
   if item[:extension] == 'md'
     filter :kramdown
     filter :colorize_syntax
-
     layout 'default'
-
-    if item[:layout] == 'expanded'
-      layout 'expanded'
-    end
   elsif item[:extension] == 'css'
     # don’t filter stylesheets
+  elsif item[:filename] == 'content/404.html'
+    # don’t filter 404
   elsif item.binary?
     # don’t filter binary items
   else
     filter :erb
     layout 'default'
+  end
+
+  if item[:layout] == 'expanded'
+    layout 'expanded'
   end
 end
 
@@ -37,6 +38,8 @@ route '*' do
   if item[:extension] == 'css'
     # Write item with identifier /foo/ to /foo.css
     item.identifier.chop + '.css'
+  elsif item[:filename] == 'content/404.html'
+    item.identifier.chop + '.html'
   elsif item.binary?
     # Write item with identifier /foo/ to /foo.ext
     item.identifier.chop + '.' + item[:extension]
