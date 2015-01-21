@@ -187,6 +187,16 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
     warn "#{Color.white}git#{Color.reset} is not installed! " \
          "Do not worry, trying with #{Color.white}curl#{Color.reset}..."
 
+    # Checks that you have curl
+    if curl == nil
+      warn "#{Color.white}curl#{Color.reset} is not installed! " \
+           "Do not worry, repairing that..."
+
+      if /linux/i === RUBY_PLATFORM
+        sudo "apt-get", "install", "curl"
+      end
+    end
+
     # Pipefail to cause the exit status from curl to propogate if it fails...
     # We use -k for curl because Leopard has a bunch of bad SSL certificates
     curl_flags = "fsSL"
@@ -208,14 +218,18 @@ Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/cli.rb"
 end
 
-if gem
-  ohai "CASE 1..."
-else
-  ohai "CASE 2..."
-end
-
 # All needed packages
 ohai "Installing third-party libraries..."
+
+# Checks that you have gem
+if gem == nil
+  warn "#{Color.white}gem#{Color.reset} is not installed! " \
+       "Do not worry, repairing that..."
+
+  if /linux/i === RUBY_PLATFORM
+    sudo "apt-get", "install", "rubygems"
+  end
+end
 
 sudo "gem", "install", "nanoc"
 sudo "gem", "install", "kramdown"
