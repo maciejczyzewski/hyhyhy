@@ -17,6 +17,10 @@ compile '*' do
   if item[:extension] == 'md'
     filter :kramdown
     layout 'default'
+
+    if item[:layout] == 'expanded'
+      layout 'expanded'
+    end
   elsif item[:extension] == 'css'
     # don’t filter stylesheets
   elsif item.binary?
