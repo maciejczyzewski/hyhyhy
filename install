@@ -229,7 +229,7 @@ if gem == nil
        "Do not worry, repairing that..."
 
   if /linux/i === RUBY_PLATFORM
-    sudo "apt-get", "update", "ruby"
+    sudo "apt-get", "upgrade", "ruby"
     sudo "apt-get", "install", "rubygems"
   else
     abort "...however no, you have to do it yourself!"
