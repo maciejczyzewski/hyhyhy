@@ -3,6 +3,13 @@ os:
   - linux
   - osx
 
+# Configuring
+before_install:
+  - "export DEBIAN_FRONTEND=noninteractive"
+  - sudo apt-get update -qy
+  - sudo apt-get upgrade -yq ruby --fix-missing
+  - sudo apt-get install -yq rubygems --fix-missing
+
 # Testing
 script: "sudo ./tests"
 
