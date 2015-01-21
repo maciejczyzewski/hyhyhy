@@ -208,7 +208,7 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
            "Do not worry, repairing that..."
 
       if /linux/i === RUBY_PLATFORM
-        sudo "apt-get", "install", "curl", "--fix-missing"
+        sudo "apt-get", "-y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew", "install", "curl", "--fix-missing"
       else
         abort "...however no, you have to do it yourself!"
       end
@@ -244,8 +244,8 @@ if gem == nil
        "Do not worry, repairing that..."
 
   if /linux/i === RUBY_PLATFORM
-    sudo "apt-get", "upgrade", "ruby", "--fix-missing"
-    sudo "apt-get", "install", "rubygems", "--fix-missing"
+    sudo "apt-get", "-y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew", "upgrade", "ruby", "--fix-missing"
+    sudo "apt-get", "-y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew", "install", "rubygems", "--fix-missing"
   else
     abort "...however no, you have to do it yourself!"
   end
