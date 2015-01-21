@@ -24,7 +24,7 @@ HYHYHY_REPO = 'https://github.com/maciejczyzewski/hyhyhy'
 HYHYHY_BRANCH = 'feature'
 
 # For linux, if there is some problems
-MAGIC_LINE = 'DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew"'
+MAGIC_LINE = "DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::=\"--force-confdef\" -o Dpkg::Options::=\"--force-confnew\""
 
 # =============================================================================
 # UTILITIES
