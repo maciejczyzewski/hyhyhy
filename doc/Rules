@@ -14,7 +14,10 @@
 #   because “*” matches zero or more characters.
 
 compile '*' do
-  if item[:extension] == 'css'
+  if item[:extension] == 'md'
+    filter :kramdown
+    layout 'default'
+  elsif item[:extension] == 'css'
     # don’t filter stylesheets
   elsif item.binary?
     # don’t filter binary items
