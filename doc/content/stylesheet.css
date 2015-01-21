@@ -12,15 +12,18 @@ nav           { text-align: center; margin-bottom: 30px; }
 nav a         { font-style: italic; }
 
 /* Typography */
-p             { line-height: 1.4; }
+p             { line-height: 1.4; margin: 20px 0px; }
 ul            { margin: 15px 0 15px 0; padding: 0; list-style: none;
                 line-height: 1.4; }
 ul li:before  { content: "\00BB \0020"; color: #888; position: absolute;
                 margin-left: -19px; }
 ol            { line-height: 1.4; margin: 15px 0 15px 30px; padding: 0; }
 blockquote    { margin: 0; font-style: italic; color: #444; }
+summary       { font-style: italic; color: #444; text-align: center; }
 
 /* Titles */
+h2, h3, h4    { font-family: 'Garamond', 'Georgia', serif;
+                font-weight: normal; }
 h2            { font-size: 30px; margin: 15px 0 5px 0; }
 h3            { font-size: 24px; margin: 15px 0 5px 0; }
 h4            { font-size: 19px; margin: 15px 0 5px 0; }
@@ -35,6 +38,10 @@ header iframe { width: 170px !important; }
 
 /* Boxes */
 aside         { width: 540px; margin: 40px auto; }
+
+/* Classes */
+.center       { text-align: center; }
+.righttext    { margin: 0; float: right; font-style: italic; }
 
 /* --------------------------------- TRASH --------------------------------- */
 
