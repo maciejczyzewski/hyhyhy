@@ -4,7 +4,7 @@ title: community
 
 Even though hyhyhy is a rather new project, there has already been a healthy community evolved around it.
 
-<div class="center">
+<div class="center non">
   <a href="https://github.com/maciejczyzewski">
     <img src="https://avatars3.githubusercontent.com/u/1976088?v=3&s=120" width="60px" alt="Maciej A. Czyzewski" />
   </a>

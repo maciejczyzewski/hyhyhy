@@ -17,7 +17,12 @@ compile '*' do
   if item[:extension] == 'md'
     filter :kramdown
     filter :colorize_syntax
-    layout 'default'
+
+    if item[:layout] == 'expanded'
+      layout 'expanded'
+    else
+      layout 'default'
+    end
   elsif item[:extension] == 'css'
     # don’t filter stylesheets
   elsif item[:filename] == 'content/404.html'
@@ -26,11 +31,12 @@ compile '*' do
     # don’t filter binary items
   else
     filter :erb
-    layout 'default'
-  end
 
-  if item[:layout] == 'expanded'
-    layout 'expanded'
+    if item[:layout] == 'expanded'
+      layout 'expanded'
+    else
+      layout 'default'
+    end
   end
 end
 
