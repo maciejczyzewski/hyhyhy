@@ -105,6 +105,7 @@ def git
   @git
 end
 
+# Function: checks that you have gem
 def gem
   @gem ||= if ENV['GEM'] and File.executable? ENV['GEM']
     ENV['GEM']
@@ -116,6 +117,20 @@ def gem
   end
 
   @gem
+end
+
+# Function: checks that you have curl
+def curl
+  @curl ||= if ENV['CURL'] and File.executable? ENV['CURL']
+    ENV['CURL']
+  elsif Kernel.system '/usr/bin/which curl'
+    'curl'
+  else
+    exe = `xcrun -find curl 2>/dev/null`.chomp
+    exe if $? && $?.success? && !exe.empty? && File.executable?(exe)
+  end
+
+  @curl
 end
 
 # Function: return OS X version
@@ -193,7 +208,8 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
            "Do not worry, repairing that..."
 
       if /linux/i === RUBY_PLATFORM
-        sudo "apt-get", "install", "curl"
+        sudo "apt-get", "update", "-qq"
+        sudo "apt-get", "install", "curl", "-qq"
       else
         abort "...however no, you have to do it yourself!"
       end
@@ -229,9 +245,9 @@ if gem == nil
        "Do not worry, repairing that..."
 
   if /linux/i === RUBY_PLATFORM
-    sudo "apt-get", "update"
-    sudo "apt-get", "upgrade", "ruby"
-    sudo "apt-get", "install", "rubygems"
+    sudo "apt-get", "update", "-qq"
+    sudo "apt-get", "upgrade", "ruby", "-qq"
+    sudo "apt-get", "install", "rubygems", "-qq"
   else
     abort "...however no, you have to do it yourself!"
   end
