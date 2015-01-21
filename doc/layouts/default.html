@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>A Brand New nanoc Site - <%= @item[:title] %></title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="<%= @items['/stylesheet/'].path %>">
   </head>
   <body>
     <aside>
@@ -23,10 +23,8 @@
 
       <nav>
         <a href="/">overview</a> //
-        <a href="/docs/">docs</a> //
-        <a href="/community/">community</a> //
-        <a href="/snippets/">snippets</a> //
-        <a href="/extensions/">extensions</a>
+        <a href="/docs.html">docs</a> //<!-- GUIDE -->
+        <a href="community/">community</a>
       </nav>
 
       <%= yield %>
