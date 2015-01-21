@@ -171,13 +171,16 @@ puts "#{HYHYHY_PREFIX}/lib/hyhyhy/..."   # files & cache
 # Ask
 if ARGV.first != 'travis'
   ready?
-else
-  bash "export DEBIAN_FRONTEND=noninteractive"
 end
 
 # Create main directory
 Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/mkdir", '-p', 'lib/hyhyhy'
+end
+
+# Turn off interactive mode
+if /linux/i === RUBY_PLATFORM
+  bash "export DEBIAN_FRONTEND=noninteractive"
 end
 
 # Download files from repository
