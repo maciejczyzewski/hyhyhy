@@ -17,6 +17,12 @@ Even though hyhyhy is a rather new project, there has already been a healthy com
   <a href="https://github.com/juanbrujo">
     <img src="https://avatars1.githubusercontent.com/u/362186?v=3&s=120" width="60px" alt="Jorge Epuñan" />
   </a>
+  <a href="https://github.com/ryuheechul">
+	<img src="https://avatars2.githubusercontent.com/u/2637709?v=3&s=120" width="60px" alt="Heechul Ryu" />
+  </a>
+  <a href="https://github.com/aminb">
+	<img src="https://avatars1.githubusercontent.com/u/1254858?v=3&s=120" width="60px" alt="Amin Bandali" />
+  </a>
 </div>
 
 There is an active mailinglist both for developers using hyhyhy as well as working on the core, and an IRC channel.
@@ -24,6 +30,7 @@ There is an active mailinglist both for developers using hyhyhy as well as worki
 <ul>
   <li><a href="https://github.com/maciejczyzewski/hyhyhy">Repository</a></li>
   <li><a href="https://github.com/maciejczyzewski/hyhyhy/issues">Issues tracker</a></li>
+  <li><a href="https://github.com/maciejczyzewski/hyhyhy/graphs/contributors">Contributors</a></li>
   <li><a href="https://raw.githubusercontent.com/maciejczyzewski/hyhyhy/master/AUTHORS.txt">Mailinglist</a></li>
   <li><a href="irc://chat.freenode.net/#hyhyhy">IRC Channel</a></li>
 </ul>
