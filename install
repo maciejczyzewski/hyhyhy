@@ -129,11 +129,11 @@ end
 # =============================================================================
 
 # Check ruby version (>= 1.9.3)
-abort "requires ruby version >= #{Color.white}1.9.3#{Color.reset}!" if 
+abort "requires ruby version >= #{Color.white}1.9.3#{Color.reset}!" if
       RUBY_VERSION.split('.')[0,3].join.to_i < 193
 
 # Make sure rubygems is already loaded.
-abort "requires #{Color.white}rubygems#{Color.reset}!" unless 
+abort "requires #{Color.white}rubygems#{Color.reset}!" unless
       ENV['RUBYOPT'] or defined? Gem
 
 # Invalidate sudo timestamp before exiting

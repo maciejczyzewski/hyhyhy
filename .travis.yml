@@ -2,7 +2,7 @@
 language: ruby
 
 # Varieties
-rvm: 1.9.3
+rvm: 1.9.4
 
 # Multiple Operating Systems
 os:
