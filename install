@@ -105,20 +105,6 @@ def git
   @git
 end
 
-# Function: checks that you have curl
-def curl
-  @curl ||= if ENV['CURL'] and File.executable? ENV['CURL']
-    ENV['CURL']
-  elsif Kernel.system '/usr/bin/which curl'
-    'curl'
-  else
-    exe = `xcrun -find curl 2>/dev/null`.chomp
-    exe if $? && $?.success? && !exe.empty? && File.executable?(exe)
-  end
-
-  @curl
-end
-
 # Function: return OS X version
 def darwin_version
   @darwin_version ||= `/usr/bin/sw_vers -productVersion`.chomp[/10\.\d+/].extend(Version)
@@ -127,14 +113,6 @@ end
 # =============================================================================
 # INSTALLER
 # =============================================================================
-
-# Check ruby version (>= 1.9.3)
-abort "requires ruby version >= #{Color.white}1.9.3#{Color.reset}!" if
-      RUBY_VERSION.split('.')[0,3].join.to_i < 193
-
-# Make sure rubygems is already loaded.
-abort "requires #{Color.white}rubygems#{Color.reset}!" unless
-      ENV['RUBYOPT'] or defined? Gem
 
 # Invalidate sudo timestamp before exiting
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
@@ -200,18 +178,6 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
     warn "#{Color.white}git#{Color.reset} is not installed! " \
          "Do not worry, trying with #{Color.white}curl#{Color.reset}..."
 
-    # Checks that you have curl
-    if curl == nil
-      warn "#{Color.white}curl#{Color.reset} is not installed! " \
-           "Do not worry, repairing that..."
-
-      if /linux/i === RUBY_PLATFORM
-        sudo "apt-get", "-y", "install", "curl", "--fix-missing"
-      else
-        abort "...however no, you have to do it yourself!"
-      end
-    end
-
     # Pipefail to cause the exit status from curl to propogate if it fails...
     # We use -k for curl because Leopard has a bunch of bad SSL certificates
     curl_flags = "fsSL"
@@ -232,16 +198,6 @@ Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
   sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/cli.rb"
 end
-
-# All needed packages
-ohai "Installing third-party libraries..."
-
-# Install packages from rubygems
-sudo "gem", "install", "nanoc"     # Documentation
-sudo "gem", "install", "kramdown"  # Markdown
-sudo "gem", "install", "nokogiri"  # HTML library
-sudo "gem", "install", "coderay"   # Syntax
-sudo "gem", "install", "adsf"      # Server
 
 # Ooopppss?!
 warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless

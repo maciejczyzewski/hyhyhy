@@ -2,4 +2,5 @@
 
 ./install travis          # Installation
 hyhyhy                    # Tests
-(cd doc && nanoc compile) # Documentation
+
+echo "✓ all tests passing!"
