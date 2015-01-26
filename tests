@@ -1,6 +1,14 @@
 #!/bin/sh
 
-./install travis          # Installation
-hyhyhy                    # Tests
+echo "installation"                                              # Installation
+echo "------------------------------------------------------------------------"
 
-echo "✓ all tests passing!"
+./install travis
+
+echo "running hyhyhy CLI"                                          # Basic test
+echo "------------------------------------------------------------------------"
+
+hyhyhy
+
+echo "------------------------------------------------------------------------"
+echo "\033[32m✓ all tests passing! \033[0m"
