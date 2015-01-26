@@ -1,6 +1,9 @@
 # Main language
 language: ruby
 
+# Varieties
+rvm: 1.9.3
+
 # Multiple Operating Systems
 os:
   - linux
