@@ -1,18 +1,17 @@
 # Main language
 language: ruby
 
-# Varieties
-rvm:
-  - 2.1.0
+# Minimal version
+rvm: 1.9.3
 
 # Multiple Operating Systems
 os:
   - linux
   - osx
 
-# Configuring
-before_install:
-  - sudo apt-get update && sudo apt-get --reinstall install -qq rubygems
+# Configuring (not needed)
+# before_install:
+#  - sudo apt-get update && sudo apt-get --reinstall install -qq rubygems
 
 # Testing
 script: "sudo ./tests"
