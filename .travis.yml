@@ -1,3 +1,6 @@
+# Main language
+language: ruby
+
 # Multiple Operating Systems
 os:
   - linux
@@ -5,10 +8,7 @@ os:
 
 # Configuring
 before_install:
-  - "export DEBIAN_FRONTEND=noninteractive"
-  - sudo apt-get update -qy
-  - sudo apt-get upgrade -yq ruby --fix-missing
-  - sudo apt-get install -yq rubygems --fix-missing
+  - sudo apt-get update && sudo apt-get --reinstall install -qq rubygems
 
 # Testing
 script: "sudo ./tests"
