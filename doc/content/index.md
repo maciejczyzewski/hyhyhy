@@ -26,7 +26,15 @@ There’s also support for __keyboard shortcuts__, showing the position inside t
 
 All presentations are very well supported across browsers and the library also includes lots of documentation.
 
+---
+
+<!-- Source code -->
 <a href="https://github.com/maciejczyzewski/hyhyhy" class="right-text" target="_blank">source code</a>
 
-[![GitHub version](https://badge.fury.io/gh/maciejczyzewski%2Fhyhyhy.svg)](http://badge.fury.io/gh/maciejczyzewski%2Fhyhyhy)
-[![Build Status](https://travis-ci.org/maciejczyzewski/hyhyhy.svg?branch=feature)](https://travis-ci.org/maciejczyzewski/hyhyhy)
+<!-- Badges -->
+<a href="http://badge.fury.io/gh/maciejczyzewski%2Fhyhyhy">
+  <img src="https://badge.fury.io/gh/maciejczyzewski%2Fhyhyhy.svg" alt="GitHub version">
+</a>
+<a href="https://travis-ci.org/maciejczyzewski/hyhyhy">
+  <img src="https://travis-ci.org/maciejczyzewski/hyhyhy.svg?branch=feature" alt="Build Status">
+</a>
