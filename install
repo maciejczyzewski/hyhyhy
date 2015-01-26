@@ -105,20 +105,6 @@ def git
   @git
 end
 
-# Function: checks that you have gem
-def gem
-  @gem ||= if ENV['GEM'] and File.executable? ENV['GEM']
-    ENV['GEM']
-  elsif Kernel.system '/usr/bin/which gem'
-    'gem'
-  else
-    exe = `xcrun -find gem 2>/dev/null`.chomp
-    exe if $? && $?.success? && !exe.empty? && File.executable?(exe)
-  end
-
-  @gem
-end
-
 # Function: checks that you have curl
 def curl
   @curl ||= if ENV['CURL'] and File.executable? ENV['CURL']
@@ -141,6 +127,14 @@ end
 # =============================================================================
 # INSTALLER
 # =============================================================================
+
+# Check ruby version (>= 1.9.3)
+abort "requires ruby version >= #{Color.white}1.9.3#{Color.reset}!" if 
+      RUBY_VERSION.split('.')[0,3].join.to_i < 193
+
+# Make sure rubygems is already loaded.
+abort "requires #{Color.white}rubygems#{Color.reset}!" unless 
+      ENV['RUBYOPT'] or defined? Gem
 
 # Invalidate sudo timestamp before exiting
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
@@ -173,8 +167,12 @@ if ARGV.first != 'travis'
   ready?
 end
 
+# Improve permissions
+sudo "/bin/chmod", "o-w", HYHYHY_PREFIX
+
 # Create main directory
 Dir.chdir HYHYHY_PREFIX do
+  sudo "/bin/mkdir", '-p', 'bin'
   sudo "/bin/mkdir", '-p', 'lib/hyhyhy'
 end
 
@@ -238,22 +236,12 @@ end
 # All needed packages
 ohai "Installing third-party libraries..."
 
-# Checks that you have gem
-if gem == nil
-  warn "#{Color.white}gem#{Color.reset} is not installed! " \
-       "Do not worry, repairing that..."
-
-  if /linux/i === RUBY_PLATFORM
-    sudo "apt-get", "-y", "upgrade", "ruby", "--fix-missing"
-    sudo "apt-get", "-y", "install", "rubygems", "--fix-missing"
-  else
-    abort "...however no, you have to do it yourself!"
-  end
-end
-
-sudo "gem", "install", "nanoc"
-sudo "gem", "install", "kramdown"
-sudo "gem", "install", "coderay"
+# Install packages from rubygems
+sudo "gem", "install", "nanoc"     # Documentation
+sudo "gem", "install", "kramdown"  # Markdown
+sudo "gem", "install", "nokogiri"  # HTML library
+sudo "gem", "install", "coderay"   # Syntax
+sudo "gem", "install", "adsf"      # Server
 
 # Ooopppss?!
 warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless
