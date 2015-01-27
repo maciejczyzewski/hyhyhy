@@ -1,0 +1,6 @@
+*.o
+*.obj
+markdown
+markdown.exp
+markdown.lib
+libmarkdown.so*

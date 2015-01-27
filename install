@@ -122,14 +122,14 @@ at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 Dir.chdir "/usr"
 
 # Show ASCII
-puts " _           _           _
+puts "\033[32m _           _           _
 | |         | |         | |
 | |__  _   _| |__  _   _| |__  _   _
 | '_ \\| | | | '_ \\| | | | '_ \\| | | |
 | | | | |_| | | | | |_| | | | | |_| |
 |_| |_|\\__, |_| |_|\\__, |_| |_|\\__, |
         __/ |       __/ |       __/ |
-       |___/       |___/       |___/ "
+       |___/       |___/       |___/ \033[0m"
 puts "  #{Color.underline 35}github.com/maciejczyzewski/hyhyhy#{Color.reset}"
 puts ""
 
@@ -138,6 +138,7 @@ ohai "This script will install:"
 
 # Structure
 puts "#{HYHYHY_PREFIX}/bin/hyhyhy"       # executable (initiator)
+puts "#{HYHYHY_PREFIX}/bin/markdown"     # executable (markdown)
 puts "#{HYHYHY_PREFIX}/lib/hyhyhy/..."   # files & cache
 
 # Ask
@@ -188,11 +189,21 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
          "#{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | " \
          "/usr/bin/tar xz -m --strip 1'"
   end
+
+  # Markdown library
+  Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy/lib/markdown" do
+    bash "make"
+  end
+
+  # After compilation add to executables
+  bash "/bin/cp", "-p",
+       "lib/hyhyhy/lib/markdown/markdown", "lib/hyhyhy/bin/markdown"
 end
 
 # Copy executable script
 Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/cp", "-p", "lib/hyhyhy/bin/hyhyhy", "bin/hyhyhy"
+  sudo "/bin/cp", "-p", "lib/hyhyhy/bin/markdown", "bin/markdown"
 
   # Repair problems with permissions
   sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
