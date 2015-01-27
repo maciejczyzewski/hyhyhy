@@ -36,6 +36,6 @@ This part of the documentation, which is mostly prose, begins with some backgrou
 
 <br />
 
-<div class="center"><i><a href="https://github.com/maciejczyzewski/hyhyhy">improve this documentation on github</a></i></div>
+<div class="center"><i><a href="https://github.com/maciejczyzewski/hyhyhy/doc">improve this documentation on github</a></i></div>
 
 <br />
