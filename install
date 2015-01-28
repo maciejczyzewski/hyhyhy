@@ -223,7 +223,7 @@ Dir.chdir HYHYHY_PREFIX do
 
   # Repair problems with permissions
   sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
-  sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/cli.rb"
+  sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/console.rb"
 end
 
 # Ooopppss?!
