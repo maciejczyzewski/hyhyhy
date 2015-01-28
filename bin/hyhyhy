@@ -23,7 +23,7 @@ unset GEM_PATH
 HYHYHY_SYSTEM=$(uname -s | tr "[:upper:]" "[:lower:]")
 if [ "$HYHYHY_SYSTEM" = "darwin" ]
 then
-    exec "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/src/cli.rb" "$@"
+    exec "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/src/console.rb" "$@"
 else
-    exec ruby -W0 "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/src/cli.rb" "$@"
+    exec ruby -W0 "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/src/console.rb" "$@"
 fi

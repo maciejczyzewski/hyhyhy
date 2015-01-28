@@ -5,7 +5,7 @@ echo "------------------------------------------------------------------------"
 
 ./install travis
 
-echo "running hyhyhy CLI"                                          # Basic test
+echo "running CLI"                                                 # Basic test
 echo "------------------------------------------------------------------------"
 
 hyhyhy

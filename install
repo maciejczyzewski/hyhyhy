@@ -114,6 +114,14 @@ end
 # INSTALLER
 # =============================================================================
 
+# Check ruby version (>= 1.9.3)
+# abort "requires ruby version >= #{Color.white}1.9.3#{Color.reset}!" if
+#       RUBY_VERSION.split('.')[0,3].join.to_i < 193
+
+# Make sure rubygems is already loaded.
+abort "requires #{Color.white}rubygems#{Color.reset}!" unless
+      ENV['RUBYOPT'] or defined? Gem
+
 # Invalidate sudo timestamp before exiting
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 
@@ -190,6 +198,14 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
          "/usr/bin/tar xz -m --strip 1'"
   end
 
+  # All needed packages
+  ohai "Installing third-party libraries..."
+
+  # Install packages from rubygems
+  bash "gem", "install", "commander" # CLI
+  bash "gem", "install", "kramdown"  # Markdown
+  bash "gem", "install", "listen"    # Watcher
+
   # Markdown library
   Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy/lib/markdown" do
     bash "make"
@@ -197,7 +213,7 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
 
   # After compilation add to executables
   bash "/bin/cp", "-p",
-       "lib/hyhyhy/lib/markdown/markdown", "lib/hyhyhy/bin/markdown"
+       "lib/markdown/markdown", "bin/markdown"
 end
 
 # Copy executable script
