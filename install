@@ -119,8 +119,8 @@ end
 #       RUBY_VERSION.split('.')[0,3].join.to_i < 193
 
 # Make sure rubygems is already loaded.
-abort "requires #{Color.white}rubygems#{Color.reset}!" unless
-      ENV['RUBYOPT'] or defined? Gem
+# abort "requires #{Color.white}rubygems#{Color.reset}!" unless
+#       ENV['RUBYOPT'] or defined? Gem
 
 # Invalidate sudo timestamp before exiting
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
