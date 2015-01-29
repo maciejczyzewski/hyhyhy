@@ -201,19 +201,12 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
   # All needed packages
   ohai "Installing third-party libraries..."
 
+  bash "which gem"
+
   # Install packages from rubygems
   bash "gem", "install", "commander" # CLI
   bash "gem", "install", "kramdown"  # Markdown
   bash "gem", "install", "listen"    # Watcher
-
-  # Markdown library
-  Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy/lib/markdown" do
-    bash "make"
-  end
-
-  # After compilation add to executables
-  bash "/bin/cp", "-p",
-       "lib/markdown/markdown", "bin/markdown"
 end
 
 # Copy executable script
