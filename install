@@ -224,7 +224,7 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
 
   # Add environment
   bash "touch", ".bash_profile"
-  bash "echo 'export HYHYHY_RUBY=#{RUBY}'", ">>", ".bash_profile"
+  bash "echo 'export HYHYHY_RUBY=\"#{RUBY}\"'", ">>", ".bash_profile"
 end
 
 # Copy executable script
