@@ -3,7 +3,7 @@
 echo "installation"                                              # Installation
 echo "------------------------------------------------------------------------"
 
-./install travis
+./install
 
 echo "running CLI"                                                 # Basic test
 echo "------------------------------------------------------------------------"
