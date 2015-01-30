@@ -227,8 +227,9 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
   sudo GEM, "install", "listen"    # Watcher
 
   # Add environment
-  bash "touch", ".bash_profile"
-  bash "echo", "'export HYHYHY_RUBY=\"#{RUBY}\"'", ">>", ".bash_profile"
+  File.open('.bash_profile', 'w') {
+    |file| file.write("export HYHYHY_RUBY=\"#{RUBY}\"")
+  }
 end
 
 # Copy executable script
