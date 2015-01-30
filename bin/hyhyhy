@@ -17,7 +17,7 @@ then
                           chdir "$HYHYHY_SYMLINK_DIRECTORY" && pwd -P)
 fi
 
-HYHYHY_LIBRARY_DIRECTORY=$(chdir "$HYHYHY_FILE_DIRECTORY"/../lib && pwd -P)
+HYHYHY_LIBRARY_DIRECTORY=$(chdir "$HYHYHY_FILE_DIRECTORY"/../ && pwd -P)
 
 HYHYHY_SYSTEM=$(uname -s | tr "[:upper:]" "[:lower:]")
 if [ "$HYHYHY_SYSTEM" = "darwin" ]

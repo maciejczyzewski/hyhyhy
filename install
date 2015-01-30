@@ -189,12 +189,12 @@ sudo "/bin/chmod", "o-w", HYHYHY_PREFIX
 
 # Create main directory
 Dir.chdir HYHYHY_PREFIX do
-  sudo "/bin/mkdir", '-p', 'bin'
-  sudo "/bin/mkdir", '-p', 'hyhyhy'
+  sudo "/bin/mkdir", "-p", "bin"
+  sudo "/bin/mkdir", "-p", "hyhyhy"
 end
 
 # Download files from repository
-Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
+Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
   # Here comes the party
   ohai "Downloading and installing hyhyhy..."
 
@@ -239,8 +239,7 @@ end
 
 # Copy executable script
 Dir.chdir HYHYHY_PREFIX do
-  sudo "/bin/cp", "-p", "lib/hyhyhy/bin/hyhyhy", "bin/hyhyhy"
-  sudo "/bin/cp", "-p", "lib/hyhyhy/bin/markdown", "bin/markdown"
+  sudo "/bin/cp", "-p", "hyhyhy/bin/hyhyhy", "bin/hyhyhy"
 
   # Repair problems with permissions
   sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
