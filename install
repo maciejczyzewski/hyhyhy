@@ -175,7 +175,7 @@ puts "executable:        #{HYHYHY_PREFIX}/bin/hyhyhy"    # executable
 puts "directory:         #{HYHYHY_PREFIX}/hyhyhy/..."    # files & cache
 
 # Anticipates
-ohai "This script will install:"
+ohai "This script will install: (third-party)"
 
 # Packages
 puts "rubygems packages: commander, kramdown, listen"    # rubygems packages
@@ -235,9 +235,9 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
   ohai "Installing third-party libraries..."
 
   # Install packages from rubygems
-  bash GEM, "install", "commander" # CLI
-  bash GEM, "install", "kramdown"  # Markdown
-  bash GEM, "install", "listen"    # Watcher
+  sudo GEM, "install", "commander" # CLI
+  sudo GEM, "install", "kramdown"  # Markdown
+  sudo GEM, "install", "listen"    # Watcher
 end
 
 # Copy executable script
