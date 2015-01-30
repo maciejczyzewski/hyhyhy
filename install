@@ -214,15 +214,10 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
     bash GIT, "reset", "--hard", "origin/#{HYHYHY_BRANCH}"
   else
     warn "#{Color.white}git#{Color.reset} is not installed! " \
-         "Do not worry, trying with #{Color.white}curl#{Color.reset}..."
-
-    # Pipefail to cause the exit status from curl to propogate if it fails...
-    # We use -k for curl because Leopard has a bunch of bad SSL certificates
-    curl_flags = "fsSL"
-    curl_flags << "k" if darwin_version <= "10.5"
+         "Do not worry, trying with curl..."
 
     # Continue using Curl
-    bash "/bin/bash -o pipefail -c '/usr/bin/curl -#{curl_flags} " \
+    bash "/bin/bash -o pipefail -c '/usr/bin/curl -fsSL " \
          "#{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | " \
          "/usr/bin/tar xz -m --strip 1'"
   end
