@@ -79,8 +79,8 @@ end
 # Function: run commands with permissions
 #   sudo "/bin/chmod", "o-w", HYHYHY_PREFIX
 def sudo *args
-  ohai "/usr/bin/sudo", *args
-  bash "/usr/bin/sudo", *args
+  ohai "sudo", *args
+  bash "sudo", *args
 end
 
 # Function: asks the question
@@ -113,9 +113,7 @@ def which cmd
       return exe if File.executable?(exe) && !File.directory?(exe)
     }
   end
-
-  # Nothing, not installed
-  return nil
+  return nil # Nothing, not installed
 end
 
 # =============================================================================
@@ -123,7 +121,7 @@ end
 # =============================================================================
 
 # Invalidate sudo timestamp before exiting
-at_exit { Kernel.system "/usr/bin/sudo", "-k" }
+at_exit { Kernel.system "sudo", "-k" }
 
 # The block form of Dir.chdir fails later if Dir.CWD doesn't exist which I
 # guess is fair enough. Also sudo prints a warning message for no good reason
@@ -132,8 +130,6 @@ Dir.chdir "/usr"
 # Save paths, preliminary analysis
 RUBY = which 'ruby'
 GEM  = which 'gem'
-GIT  = which 'git'
-CURL = which 'curl'
 
 # Abort, if there is no ruby or gem
 abort "Oh My God! Script needs ruby and gem to work properly." if
@@ -142,10 +138,6 @@ abort "Oh My God! Script needs ruby and gem to work properly." if
 # Abort, if ruby version is to old (>= 1.9.3)
 abort "Oh My God! Requires ruby version >= 1.9.3" if
       `#{RUBY} -e "puts RUBY_VERSION"`.split('.')[0,3].join.to_i < 193
-
-puts [RUBY, GEM, GIT, CURL]
-
-# abort "BREAK LINE"
 
 # =============================================================================
 # INSTALLER
@@ -171,7 +163,7 @@ puts "executable:        #{HYHYHY_PREFIX}/bin/hyhyhy"    # executable
 puts "directory:         #{HYHYHY_PREFIX}/hyhyhy/..."    # files & cache
 
 # Anticipates
-ohai "This script will install: (third-party)"
+ohai "This script will install:"
 
 # Packages
 puts "rubygems packages: commander, kramdown, listen"    # rubygems packages
@@ -181,15 +173,15 @@ puts "bower packages:    katex, metricsgraphics, prism"  # bower packages
 abort unless ask "Are you ready for that?"
 
 # Improve permissions
-sudo "/bin/chmod", "o-w", HYHYHY_PREFIX
+sudo "chmod", "o-w", HYHYHY_PREFIX
 
 # Create main directory
 Dir.chdir HYHYHY_PREFIX do
-  sudo "/bin/mkdir", "-p", "bin"
-  sudo "/bin/mkdir", "-p", "hyhyhy"
+  sudo "mkdir", "-p", "bin"
+  sudo "mkdir", "-p", "hyhyhy"
 
   # Improve permissions
-  sudo "/bin/chmod", "777", "hyhyhy" # g+rwx eeyy?
+  sudo "chmod", "777", "hyhyhy" # g+rwx eeyy?
 end
 
 # Download files from repository
@@ -197,27 +189,27 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
   # Here comes the party
   ohai "Downloading and installing hyhyhy..."
 
-  if GIT
+  if which 'git'
     # We do it in four steps to avoid merge errors when reinstalling
-    bash GIT, "init", "-q"
+    bash "git", "init", "-q"
 
     # "git remote add" will fail if the remote is defined in the global config
-    bash GIT, "config", "remote.origin.url", HYHYHY_REPO
-    bash GIT, "config", "remote.origin.fetch",
+    bash "git", "config", "remote.origin.url", HYHYHY_REPO
+    bash "git", "config", "remote.origin.fetch",
               "+refs/heads/*:refs/remotes/origin/*"
 
-    args = GIT, "fetch", "origin",
+    args = "git", "fetch", "origin",
            "#{HYHYHY_BRANCH}:refs/remotes/origin/#{HYHYHY_BRANCH}", "-n"
     args << "--depth=1" if ARGV.include? "--fast"
     bash(*args)
 
-    bash GIT, "reset", "--hard", "origin/#{HYHYHY_BRANCH}"
+    bash "git", "reset", "--hard", "origin/#{HYHYHY_BRANCH}"
   else
-    warn "#{Color.white}git#{Color.reset} is not installed! " \
+    warn "git is not installed! " \
          "Do not worry, trying with curl..."
 
     # Continue using Curl
-    bash "/bin/bash -o pipefail -c '/usr/bin/curl -fsSL " \
+    bash "bash -o pipefail -c 'curl -fsSL " \
          "#{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | " \
          "tar xz -m --strip 1'"
   end
@@ -229,17 +221,19 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
   sudo GEM, "install", "commander" # CLI
   sudo GEM, "install", "kramdown"  # Markdown
   sudo GEM, "install", "listen"    # Watcher
+
+  # Add environment
+  bash "touch", ".bash_profile"
+  bash "echo 'export HYHYHY_RUBY=#{RUBY}'", ">>", ".bash_profile"
 end
 
 # Copy executable script
 Dir.chdir HYHYHY_PREFIX do
-  sudo "/bin/cp", "-p", "hyhyhy/bin/hyhyhy", "bin/hyhyhy"
+  sudo "cp", "-p", "hyhyhy/bin/hyhyhy", "bin/hyhyhy"
 
   # Repair problems with permissions
-  sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
+  sudo "chmod", "u+rwx", "bin/hyhyhy"
 end
-
-p ENV['PATH']
 
 # Ooopppss?!
 warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless
@@ -249,4 +243,4 @@ warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless
 ohai "Installation successful!"
 
 # A little bit of culture...
-puts "Run `hyhyhy help` to get started"
+puts "Run `hyhyhy help` to get started."
