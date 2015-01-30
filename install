@@ -137,20 +137,17 @@ abort "Oh My God! Script needs ruby and gem to work properly." unless
 abort "Oh My God! Script needs git or curl to download hyhyhy." unless
       which 'git' and which 'curl'
 
-# Abort, if ruby version is to old (>= 1.9.3)
-abort "Oh My God! Requires ruby version >= 1.9.3" if
-      RUBY_VERSION.split('.')[0,3].join.to_i < 193
-
 # Save paths
 RUBY = which 'ruby'
 GEM  = which 'gem'
 GIT  = which 'git'
 CURL = which 'curl'
 
-p RUBY
-p GEM
-p GIT
-p CURL
+# Abort, if ruby version is to old (>= 1.9.3)
+abort "Oh My God! Requires ruby version >= 1.9.3" if
+      `#{RUBY} -e "puts RUBY_VERSION"`.split('.')[0,3].join.to_i < 193
+
+puts [RUBY, GEM, GIT, CURL]
 
 abort "BREAK LINE"
 
