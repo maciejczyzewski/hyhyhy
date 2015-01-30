@@ -129,19 +129,15 @@ at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 # guess is fair enough. Also sudo prints a warning message for no good reason
 Dir.chdir "/usr"
 
-# Abort, if there is no ruby or gem
-abort "Oh My God! Script needs ruby and gem to work properly." unless
-      which 'ruby' or which 'gem'
-
-# Abort, if there is no git and curl
-abort "Oh My God! Script needs git or curl to download hyhyhy." unless
-      which 'git' and which 'curl'
-
-# Save paths
+# Save paths, preliminary analysis
 RUBY = which 'ruby'
 GEM  = which 'gem'
 GIT  = which 'git'
 CURL = which 'curl'
+
+# Abort, if there is no ruby or gem
+abort "Oh My God! Script needs ruby and gem to work properly." if
+      RUBY == nil or GEM == nil
 
 # Abort, if ruby version is to old (>= 1.9.3)
 abort "Oh My God! Requires ruby version >= 1.9.3" if
