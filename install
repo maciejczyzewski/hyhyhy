@@ -177,6 +177,10 @@ sudo "chmod", "o-w", HYHYHY_PREFIX
 
 # Create main directory
 Dir.chdir HYHYHY_PREFIX do
+  # Remove old file
+  sudo "rm", "-f", "bin/hyhyhy"
+
+  # Create directories
   sudo "mkdir", "-p", "bin"
   sudo "mkdir", "-p", "hyhyhy"
 
@@ -224,7 +228,7 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
 
   # Add environment
   bash "touch", ".bash_profile"
-  bash "echo 'export HYHYHY_RUBY=\"#{RUBY}\"'", ">>", ".bash_profile"
+  bash "echo", "'export HYHYHY_RUBY=\"#{RUBY}\"'", ">>", ".bash_profile"
 end
 
 # Copy executable script
