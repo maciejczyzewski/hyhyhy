@@ -125,8 +125,10 @@ end
 # Invalidate sudo timestamp before exiting
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 
-# Checks if the right user has run script
+# It's from Internet! Security...
 abort "Do not run this as root!" if Process.uid == 0
+
+# Checks if the right user has run script
 abort <<-EOABORT unless `groups`.split.include? "admin"
 This script requires the user #{ENV['USER']} to be an Administrator. If this
 sucks for you then you can install hyhyhy in your home directory or however
@@ -162,7 +164,7 @@ p GEM
 p GIT
 p CURL
 
-abort
+abort "BREAK LINE"
 
 # =============================================================================
 # INSTALLER
