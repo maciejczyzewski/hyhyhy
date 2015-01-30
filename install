@@ -193,7 +193,7 @@ Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/mkdir", "-p", "hyhyhy"
 
   # Improve permissions
-  sudo "/bin/chmod", "777", "hyhyhy"
+  sudo "/bin/chmod", "777", "hyhyhy" # g+rwx eeyy?
 end
 
 # Download files from repository
@@ -246,7 +246,6 @@ Dir.chdir HYHYHY_PREFIX do
 
   # Repair problems with permissions
   sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
-  sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/console.rb"
 end
 
 p ENV['PATH']
