@@ -22,7 +22,7 @@ source "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/.bash_profile"
 HYHYHY_SYSTEM=$(uname -s | tr "[:upper:]" "[:lower:]")
 if [ "$HYHYHY_SYSTEM" = "darwin" ]
 then
-    exec HYHYHY_RUBY "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/src/console.rb" "$@"
+    exec $HYHYHY_RUBY "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/src/console.rb" "$@"
 else
-    exec HYHYHY_RUBY -W0 "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/src/console.rb" "$@"
+    exec $HYHYHY_RUBY -W0 "$HYHYHY_LIBRARY_DIRECTORY/hyhyhy/src/console.rb" "$@"
 fi
