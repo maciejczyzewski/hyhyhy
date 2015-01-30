@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+# encoding: UTF-8
+
+## ruby -e "$(curl -fsSL raw.github.com/maciejczyzewski/hyhyhy/master/install)"
 
 ###############################################################################
 #                                       _           _           _             #
@@ -23,12 +26,18 @@ HYHYHY_PREFIX = '/usr/local'
 HYHYHY_REPO = 'https://github.com/maciejczyzewski/hyhyhy'
 HYHYHY_BRANCH = 'feature'
 
+# Set encoding (UTF_8), globally
+Encoding.default_internal = Encoding::UTF_8
+Encoding.default_external = Encoding::UTF_8
+
 # =============================================================================
 # UTILITIES
 # =============================================================================
 
+# Module: Colors in console
 module Color extend self
   def blue; bold 34; end
+  def green; bold 32; end
   def white; bold 39; end
   def red; underline 31; end
   def reset; escape 0; end
@@ -37,12 +46,14 @@ module Color extend self
   def escape n; "\033[#{n}m" if STDOUT.tty? end
 end
 
+# Module: Split version to number
 module Version
   def <=>(other)
     split(".").map { |i| i.to_i } <=> other.split(".").map { |i| i.to_i }
   end
 end
 
+# Class: Improve shell arguments
 class Array
   def shell_s
     cp = dup
@@ -52,107 +63,143 @@ class Array
 end
 
 # Function: normal output (blue color)
+#   ohai "My full name is Maciej Anthony Czyzewski!"
 def ohai *args
   puts "#{Color.blue}==>#{Color.white} #{args.shell_s}#{Color.reset}"
 end
 
 # Function: warning output (underline + red color)
+#   warn "#{Color.white}hyhyhy#{Color.reset} is not installed!"
 def warn warning
   puts "#{Color.red}Warning#{Color.reset}: #{warning.chomp}"
 end
 
 # Function: bash output during process
+#   bash "/usr/bin/mkdir", "hyhyhy"
 def bash *args
   abort "Failed during: #{args.shell_s}" unless Kernel.system(*args)
 end
 
 # Function: run commands with permissions
+#   sudo "/bin/chmod", "o-w", HYHYHY_PREFIX
 def sudo *args
   ohai "/usr/bin/sudo", *args
   bash "/usr/bin/sudo", *args
 end
 
 # Function: asks the question
-def ready?
-  while true
-    print "Are you ready for that? [Y/n]: "
-    case gets.strip
-      when 'Y', 'y', 'j', 'J', 'yes'
-        break
-      when /\A[nN]o?\Z/ #n or no
-        abort
+#   ask "Are you ready for that?"
+def ask question
+  if STDIN.tty?
+    while true
+      print "#{Color.white}==>#{Color.reset} #{question} [Y/n]: "
+      case gets.strip
+        when 'Y', 'y', 'j', 'J', 'yes'
+          return true
+        when /\A[nN]o?\Z/
+          return false
+      end
     end
+  else 
+    # Do not ask, anything agrees.
+    # This improves the tests. (Travis)
+    return true
   end
 end
 
-# Function: checks that you can download
-def git
-  @git ||= if ENV['GIT'] and File.executable? ENV['GIT']
-    ENV['GIT']
-  elsif Kernel.system '/usr/bin/which git'
-    'git'
-  else
-    exe = `xcrun -find git 2>/dev/null`.chomp
-    exe if $? && $?.success? && !exe.empty? && File.executable?(exe)
+# Function: cross-platform way of finding an executable in the $PATH.
+#   which ruby  #=> /usr/bin/ruby
+def which cmd
+  exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+  ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
+    exts.each { |ext|
+      exe = File.join(path, "#{cmd}#{ext}")
+      return exe if File.executable?(exe) && !File.directory?(exe)
+    }
   end
-
-  return unless @git
-  # Github only supports HTTPS fetches on 1.7.10 or later:
-  # https://help.github.com/articles/https-cloning-errors
-  `#{@git} --version` =~ /git version (\d\.\d+\.\d+)/
-  return if $1.nil? or $1.extend(Version) < "1.7.10"
-
-  @git
-end
-
-# Function: return OS X version
-def darwin_version
-  @darwin_version ||= `/usr/bin/sw_vers -productVersion`.chomp[/10\.\d+/].extend(Version)
+  
+  # Nothing, not installed
+  return nil
 end
 
 # =============================================================================
-# INSTALLER
+# COMPATIBILITY
 # =============================================================================
-
-# Check ruby version (>= 1.9.3)
-# abort "requires ruby version >= #{Color.white}1.9.3#{Color.reset}!" if
-#       RUBY_VERSION.split('.')[0,3].join.to_i < 193
-
-# Make sure rubygems is already loaded.
-# abort "requires #{Color.white}rubygems#{Color.reset}!" unless
-#       ENV['RUBYOPT'] or defined? Gem
 
 # Invalidate sudo timestamp before exiting
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
+
+# Checks if the right user has run script
+abort "Do not run this as root!" if Process.uid == 0
+abort <<-EOABORT unless `groups`.split.include? "admin"
+This script requires the user #{ENV['USER']} to be an Administrator. If this
+sucks for you then you can install hyhyhy in your home directory or however
+you please; please refer to our homepage. If you still want to use this script
+set your user to be an Administrator in System Preferences or `su` to a
+non-root user with Administrator privileges.
+EOABORT
 
 # The block form of Dir.chdir fails later if Dir.CWD doesn't exist which I
 # guess is fair enough. Also sudo prints a warning message for no good reason
 Dir.chdir "/usr"
 
+# Abort, if there is no ruby or gem
+abort "Oh My God! Script needs ruby and gem to work properly." unless 
+      which 'ruby' or which 'gem'
+    
+# Abort, if there is no git and curl  
+abort "Oh My God! Script needs git or curl to download hyhyhy." unless 
+      which 'git' and which 'curl'
+
+# Abort, if ruby version is to old (>= 1.9.3)
+abort "Oh My God! Requires ruby version >= 1.9.3" if 
+      RUBY_VERSION.split('.')[0,3].join.to_i < 193
+    
+# Save paths
+RUBY = which 'ruby'
+GEM  = which 'gem'
+GIT  = which 'git'
+CURL = which 'curl'
+
+p RUBY
+p GEM
+p GIT
+p CURL
+
+abort
+        
+# =============================================================================
+# INSTALLER
+# =============================================================================
+
 # Show ASCII
-puts "\033[32m _           _           _
+puts "#{Color.green} _           _           _
 | |         | |         | |
 | |__  _   _| |__  _   _| |__  _   _
 | '_ \\| | | | '_ \\| | | | '_ \\| | | |
 | | | | |_| | | | | |_| | | | | |_| |
 |_| |_|\\__, |_| |_|\\__, |_| |_|\\__, |
         __/ |       __/ |       __/ |
-       |___/       |___/       |___/ \033[0m"
+       |___/       |___/       |___/ #{Color.reset}"
 puts "  #{Color.underline 35}github.com/maciejczyzewski/hyhyhy#{Color.reset}"
 puts ""
 
 # Anticipates
-ohai "This script will install:"
+ohai "This script will prepare:"
 
 # Structure
-puts "#{HYHYHY_PREFIX}/bin/hyhyhy"       # executable (initiator)
-puts "#{HYHYHY_PREFIX}/bin/markdown"     # executable (markdown)
-puts "#{HYHYHY_PREFIX}/lib/hyhyhy/..."   # files & cache
+puts "executable:        #{HYHYHY_PREFIX}/bin/hyhyhy"    # executable
+puts "directory:         #{HYHYHY_PREFIX}/hyhyhy/..."    # files & cache
+
+# Anticipates
+ohai "This script will install:"
+
+# Packages
+puts "rubygems packages: commander, kramdown, listen"    # rubygems packages
+puts "bower packages:    katex, metricsgraphics, prism"  # bower packages
 
 # Ask
-if ARGV.first != 'travis'
-  ready?
-end
+abort unless ask "Are you ready for that?"
 
 # Improve permissions
 sudo "/bin/chmod", "o-w", HYHYHY_PREFIX
@@ -160,7 +207,7 @@ sudo "/bin/chmod", "o-w", HYHYHY_PREFIX
 # Create main directory
 Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/mkdir", '-p', 'bin'
-  sudo "/bin/mkdir", '-p', 'lib/hyhyhy'
+  sudo "/bin/mkdir", '-p', 'hyhyhy'
 end
 
 # Download files from repository
@@ -200,8 +247,6 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
 
   # All needed packages
   ohai "Installing third-party libraries..."
-
-  bash "which gem"
 
   # Install packages from rubygems
   bash "gem", "install", "commander" # CLI
