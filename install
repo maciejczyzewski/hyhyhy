@@ -193,7 +193,7 @@ Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/mkdir", "-p", "hyhyhy"
 
   # Improve permissions
-  sudo "/bin/chmod", "g+rwx", "hyhyhy"
+  sudo "/bin/chmod", "777", "hyhyhy"
 end
 
 # Download files from repository
