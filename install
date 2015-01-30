@@ -125,15 +125,6 @@ end
 # Invalidate sudo timestamp before exiting
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 
-# Checks if the right user has run script
-abort <<-EOABORT unless `groups`.split.include? "admin"
-This script requires the user #{ENV['USER']} to be an Administrator. If this
-sucks for you then you can install hyhyhy in your home directory or however
-you please; please refer to our homepage. If you still want to use this script
-set your user to be an Administrator in System Preferences or `su` to a
-non-root user with Administrator privileges.
-EOABORT
-
 # The block form of Dir.chdir fails later if Dir.CWD doesn't exist which I
 # guess is fair enough. Also sudo prints a warning message for no good reason
 Dir.chdir "/usr"
