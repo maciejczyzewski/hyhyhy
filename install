@@ -86,7 +86,7 @@ end
 # Function: asks the question
 #   ask "Are you ready for that?"
 def ask question
-  if STDIN.tty?
+  if STDIN.tty? or STDIN.eof?
     while true
       print "#{Color.white}==>#{Color.reset} #{question} [Y/n]: "
       case gets.strip
