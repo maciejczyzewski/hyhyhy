@@ -4,6 +4,8 @@ chdir () {
   cd "$@" >/dev/null
 }
 
+# RUBY_PATH = "/usr/bin/env/ruby"
+
 HYHYHY_FILE_DIRECTORY=$(chdir "${0%/*}" && pwd -P)
 export PROJECT_HYHYHY_FILE="$HYHYHY_FILE_DIRECTORY/${0##*/}"
 
@@ -16,9 +18,6 @@ then
 fi
 
 HYHYHY_LIBRARY_DIRECTORY=$(chdir "$HYHYHY_FILE_DIRECTORY"/../lib && pwd -P)
-
-unset GEM_HOME
-unset GEM_PATH
 
 HYHYHY_SYSTEM=$(uname -s | tr "[:upper:]" "[:lower:]")
 if [ "$HYHYHY_SYSTEM" = "darwin" ]

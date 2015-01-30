@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
+require 'commander'
+
 # Set encoding (UTF_8), globally
 Encoding.default_internal = Encoding::UTF_8
 Encoding.default_external = Encoding::UTF_8
@@ -14,3 +16,4 @@ end
 
 # markdown --all-block --all-span --all-flags -all-negative
 
+p ENV

@@ -125,17 +125,14 @@ end
 # Invalidate sudo timestamp before exiting
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 
-# It's from Internet! Security...
-# abort "Do not run this as root!" if Process.uid == 0
-
 # Checks if the right user has run script
-# abort <<-EOABORT unless `groups`.split.include? "admin"
-# This script requires the user #{ENV['USER']} to be an Administrator. If this
-# sucks for you then you can install hyhyhy in your home directory or however
-# you please; please refer to our homepage. If you still want to use this script
-# set your user to be an Administrator in System Preferences or `su` to a
-# non-root user with Administrator privileges.
-# EOABORT
+abort <<-EOABORT unless `groups`.split.include? "admin"
+This script requires the user #{ENV['USER']} to be an Administrator. If this
+sucks for you then you can install hyhyhy in your home directory or however
+you please; please refer to our homepage. If you still want to use this script
+set your user to be an Administrator in System Preferences or `su` to a
+non-root user with Administrator privileges.
+EOABORT
 
 # The block form of Dir.chdir fails later if Dir.CWD doesn't exist which I
 # guess is fair enough. Also sudo prints a warning message for no good reason
@@ -213,21 +210,21 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
   # Here comes the party
   ohai "Downloading and installing hyhyhy..."
 
-  if git
+  if GIT
     # We do it in four steps to avoid merge errors when reinstalling
-    bash git, "init", "-q"
+    bash GIT, "init", "-q"
 
     # "git remote add" will fail if the remote is defined in the global config
-    bash git, "config", "remote.origin.url", HYHYHY_REPO
-    bash git, "config", "remote.origin.fetch",
+    bash GIT, "config", "remote.origin.url", HYHYHY_REPO
+    bash GIT, "config", "remote.origin.fetch",
               "+refs/heads/*:refs/remotes/origin/*"
 
-    args = git, "fetch", "origin",
+    args = GIT, "fetch", "origin",
            "#{HYHYHY_BRANCH}:refs/remotes/origin/#{HYHYHY_BRANCH}", "-n"
     args << "--depth=1" if ARGV.include? "--fast"
     bash(*args)
 
-    bash git, "reset", "--hard", "origin/#{HYHYHY_BRANCH}"
+    bash GIT, "reset", "--hard", "origin/#{HYHYHY_BRANCH}"
   else
     warn "#{Color.white}git#{Color.reset} is not installed! " \
          "Do not worry, trying with #{Color.white}curl#{Color.reset}..."
@@ -247,9 +244,9 @@ Dir.chdir "#{HYHYHY_PREFIX}/lib/hyhyhy" do
   ohai "Installing third-party libraries..."
 
   # Install packages from rubygems
-  bash "gem", "install", "commander" # CLI
-  bash "gem", "install", "kramdown"  # Markdown
-  bash "gem", "install", "listen"    # Watcher
+  bash GEM, "install", "commander" # CLI
+  bash GEM, "install", "kramdown"  # Markdown
+  bash GEM, "install", "listen"    # Watcher
 end
 
 # Copy executable script
@@ -261,6 +258,8 @@ Dir.chdir HYHYHY_PREFIX do
   sudo "/bin/chmod", "u+rwx", "bin/hyhyhy"
   sudo "/bin/chmod", "u+rwx", "lib/hyhyhy/src/console.rb"
 end
+
+p ENV['PATH']
 
 # Ooopppss?!
 warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless

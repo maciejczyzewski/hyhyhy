@@ -11,7 +11,7 @@ before_install:
   - sudo apt-get update && sudo apt-get --reinstall install -qq ruby
 
 # Testing
-script: "./tests"
+script: "sudo ./tests"
 
 # IRC notification
 notifications:
