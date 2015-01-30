@@ -219,7 +219,7 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
     # Continue using Curl
     bash "/bin/bash -o pipefail -c '/usr/bin/curl -fsSL " \
          "#{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | " \
-         "/usr/bin/tar xz -m --strip 1'"
+         "tar xz -m --strip 1'"
   end
 
   # All needed packages
