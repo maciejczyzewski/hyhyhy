@@ -228,7 +228,7 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
 
   # Add environment
   File.open('.bash_profile', 'w') {
-    |file| file.write("export HYHYHY_RUBY=\"#{RUBY}\"")
+    |file| file.write("export RUBY_PATH=\"#{RUBY}\"")
   }
 end
 
