@@ -26,6 +26,28 @@ HYHYHY_PREFIX = '/usr/local'
 HYHYHY_REPO = 'https://github.com/maciejczyzewski/hyhyhy'
 HYHYHY_BRANCH = 'feature'
 
+# FIXME: it should be a little bit improved!
+HYHYHY_DEPS = [
+  ['.'],
+  # Bower/Github (javascript)
+  ['js',  'katex',
+   'https://github.com/Khan/KaTeX/releases/download/v0.1.1/katex.tar.gz'],
+  ['js',  'metricsgraphics',
+   'https://github.com/mozilla/metrics-graphics/archive/v2.1.0.tar.gz'],
+  ['js',  'rainbow',
+   'https://github.com/ccampbell/rainbow/archive/1.1.9.tar.gz'],
+  # Github (css)
+  ['css', 'animate',
+   'https://github.com/daneden/animate.css/archive/3.2.0.tar.gz'],
+  # RubyGems (ruby)
+  ['rb',  'commander',
+   'https://github.com/tj/commander'],
+  ['rb',  'maruku',
+   'https://github.com/bhollis/maruku'],
+  ['rb',  'listen',
+   'https://github.com/guard/listen'],
+]
+
 # =============================================================================
 # UTILITIES
 # =============================================================================
@@ -166,8 +188,7 @@ puts "directory:         #{HYHYHY_PREFIX}/hyhyhy/..."    # files & cache
 ohai "This script will install:"
 
 # Packages
-puts "rubygems packages: commander, kramdown, listen"    # rubygems packages
-puts "bower packages:    katex, metricsgraphics, prism"  # bower packages
+puts HYHYHY_DEPS.reverse.collect{ |d| d[1] }.join(", ")[0..-3]
 
 # Ask
 abort unless ask "Are you ready for that?"
@@ -179,6 +200,7 @@ sudo "chmod", "o-w", HYHYHY_PREFIX
 Dir.chdir HYHYHY_PREFIX do
   # Remove old file
   sudo "rm", "-f", "bin/hyhyhy"
+  sudo "rm", "-rf", "hyhyhy/lib"
 
   # Create directories
   sudo "mkdir", "-p", "bin"
@@ -193,38 +215,29 @@ Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy" do
   # Here comes the party
   ohai "Downloading and installing hyhyhy..."
 
-  if which 'git'
-    # We do it in four steps to avoid merge errors when reinstalling
-    bash "git", "init", "-q"
+  HYHYHY_DEPS.each do |dependency|
+    # 0 - type, 1 - name, 2 - repository
 
-    # "git remote add" will fail if the remote is defined in the global config
-    bash "git", "config", "remote.origin.url", HYHYHY_REPO
-    bash "git", "config", "remote.origin.fetch",
-              "+refs/heads/*:refs/remotes/origin/*"
+    ohai "Downloading and installing #{dependency[1]}..." unless
+         dependency[0] == '.'
 
-    args = "git", "fetch", "origin",
-           "#{HYHYHY_BRANCH}:refs/remotes/origin/#{HYHYHY_BRANCH}", "-n"
-    args << "--depth=1" if ARGV.include? "--fast"
-    bash(*args)
+    case dependency[0]
+    when 'js', 'css'
+      bash "mkdir", "-p", "lib/#{dependency[1]}"
 
-    bash "git", "reset", "--hard", "origin/#{HYHYHY_BRANCH}"
-  else
-    warn "git is not installed! " \
-         "Do not worry, trying with curl..."
-
-    # Continue using Curl
-    bash "bash -o pipefail -c 'curl -fsSL " \
-         "#{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | " \
-         "tar xz -m --strip 1'"
+      Dir.chdir "#{HYHYHY_PREFIX}/hyhyhy/lib/#{dependency[1]}" do
+        bash "bash -o pipefail -c 'curl -fSL -# " \
+             "#{dependency[2]} | " \
+             "tar xz -m --strip 1'"
+      end
+    when 'rb'
+      sudo GEM, "install", dependency[1]
+    else
+      bash "bash -o pipefail -c 'curl -fSL -# " \
+           "#{HYHYHY_REPO}/tarball/#{HYHYHY_BRANCH} | " \
+           "tar xz -m --strip 1'"
+    end
   end
-
-  # All needed packages
-  ohai "Installing third-party libraries..."
-
-  # Install packages from rubygems
-  sudo GEM, "install", "commander" # CLI
-  sudo GEM, "install", "kramdown"  # Markdown
-  sudo GEM, "install", "listen"    # Watcher
 
   # Add environment
   File.open('.bash_profile', 'w') {
