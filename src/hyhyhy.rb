@@ -31,6 +31,36 @@ Encoding.default_external = Encoding::UTF_8
 # MAIN MODULE
 # =============================================================================
 
+#
+#     title: My cat, future, present!     |  Instead of giving settings at the
+#     author: Maciej A. Czyzewski         |  beginning of the file, you can
+#     animate: fadeIn                     |  save it in the .hyhyhy file
+#     ---                                 |
+#                                         |  Presentations can be written
+#     # My cat, future, present!          |  in Markdown, but also in HTML5.
+#                                         |
+#     I like my __cat__!                  |  Wrap TeX in $ or $$ delimiters.
+#                                         |  Slides are separated by a dash.
+#     $$ a^2 + b^2 = c^2 $$               |  > ---
+#                                         |
+#     ---                                 |  The transitions between slides
+#                                         |  can be defined, just by specify
+#     - *Happy*                           |  the name.
+#     - **Happy**                         |  > daneden.github.io/animate.css
+#     - ~~Happy~~                         |
+#                                         |  Of course we can put inside
+#     ---                                 |  some pieces of code. It use
+#                                         |  syntax highlighter called Rainbow.
+#     ```bash                             |
+#     rm -rf *.cats                       |  ╔═════════════════════════════╗
+#     ```                                 |  ║ .out ┌───────────────┐      ║
+#                                         |  ║      │ .in           │      ║
+#     ---                                 |  ║      │               │      ║
+#                                         |  ║      │               │      ║
+#     <b>M. A. Czyzewski</b>              |  ║      └───────────────┘      ║
+#     Thx!                                |  ╚═════════════════════════════╝
+#
+
 module Hyhyhy
   autoload :Frames, "hyhyhy/frames"
   # autoload :Config, "hyhyhy/config"

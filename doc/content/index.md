@@ -10,7 +10,7 @@ title: index
 
 Paste that at a Terminal prompt.
 
-<pre><code class="language-ruby">ruby -e "$(curl -fsSL http://git.io/SDUT_w)"</code></pre>
+<pre><code class="language-ruby">ruby -e "$(curl -fsSL raw.github.com/maciejczyzewski/hyhyhy/install)"</code></pre>
 
 ## Introduction
 

@@ -7,3 +7,9 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/maciejczyzewski/hyhyhy/i
 ```
 
 M. A. Czyzewski
+
+## Idea
+
+<div align="center">
+  <img src="/doc/content/idea.png"/>
+</div>

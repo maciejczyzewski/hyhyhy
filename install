@@ -101,7 +101,6 @@ end
 # Function: run commands with permissions
 #   sudo "/bin/chmod", "o-w", HYHYHY_PREFIX
 def sudo *args
-  ohai "sudo", *args
   bash "sudo", *args
 end
 
@@ -181,14 +180,14 @@ puts ""
 ohai "This script will prepare:"
 
 # Structure
-puts "executable:        #{HYHYHY_PREFIX}/bin/hyhyhy"    # executable
-puts "directory:         #{HYHYHY_PREFIX}/hyhyhy/..."    # files & cache
+puts "Executable: #{HYHYHY_PREFIX}/bin/hyhyhy" # executable
+puts "Directory: #{HYHYHY_PREFIX}/hyhyhy/..."  # files & cache
 
 # Anticipates
 ohai "This script will install:"
 
 # Packages
-puts HYHYHY_DEPS.reverse.collect{ |d| d[1] }.join(", ")[0..-3]
+puts "Packages: " + HYHYHY_DEPS.reverse.collect{ |d| d[1] }.join(", ")[0..-3]
 
 # Ask
 abort unless ask "Are you ready for that?"
@@ -261,4 +260,4 @@ warn "#{HYHYHY_PREFIX}/bin is not in your PATH." unless
 ohai "Installation successful!"
 
 # A little bit of culture...
-puts "Run `hyhyhy help` to get started."
+puts "Run `hyhyhy help` to get started. Check homepage for more informations!"
